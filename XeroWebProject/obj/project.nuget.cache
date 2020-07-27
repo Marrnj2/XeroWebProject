@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "MPImue0643FMUFYVke3Apk/pbAPGlpPlwVBtLhj3kTE35//FoeBcRevGJmVHy/OPj2sC8q3n81P0FMjSa3Y6Bg==",
+  "success": true,
+  "projectFilePath": "E:\\Polytech\\Year3\\Semester 2\\Project\\XeroWebProject\\XeroWebProject\\XeroWebProject.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\horrjd1\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.10.9\\microsoft.visualstudio.azure.containers.tools.targets.1.10.9.nupkg.sha512"
+  ],
+  "logs": []
+}
