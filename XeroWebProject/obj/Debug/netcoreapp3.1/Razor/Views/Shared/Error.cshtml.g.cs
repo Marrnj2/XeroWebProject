@@ -14,20 +14,27 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
 #nullable restore
 #line 1 "C:\Project\XeroWebProject\XeroWebProject\Views\_ViewImports.cshtml"
-using XeroWebProject;
+using React.AspNet;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 2 "C:\Project\XeroWebProject\XeroWebProject\Views\_ViewImports.cshtml"
+using XeroWebProject;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 3 "C:\Project\XeroWebProject\XeroWebProject\Views\_ViewImports.cshtml"
 using XeroWebProject.Models;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"d6a5625cc8fb4476f348b0fe9041c550465d8bf9", @"/Views/Shared/Error.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"ff96338deb677423d10fb475e18b32b6908aee15", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"297902ecdfb384c2f24d35ae42cbbe8e5760db5b", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared_Error : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<ErrorViewModel>
     {
         #pragma warning disable 1998
