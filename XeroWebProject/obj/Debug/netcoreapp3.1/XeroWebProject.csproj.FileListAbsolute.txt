@@ -92,6 +92,3 @@ C:\Project\XeroWebProject\XeroWebProject\bin\Debug\netcoreapp3.1\runtimes\win-x6
 C:\Project\XeroWebProject\XeroWebProject\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\v8-x64.dll
 C:\Project\XeroWebProject\XeroWebProject\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\v8-zlib-x64.dll
 C:\Project\XeroWebProject\XeroWebProject\bin\Debug\netcoreapp3.1\JavaScriptEngineSwitcher.Extensions.MsDependencyInjection.dll
-C:\Project\XeroWebProject\XeroWebProject\obj\Debug\netcoreapp3.1\XeroWebProject.csproj.CoreCompileInputs.cache
-C:\Project\XeroWebProject\XeroWebProject\obj\Debug\netcoreapp3.1\XeroWebProject.MvcApplicationPartsAssemblyInfo.cs
-C:\Project\XeroWebProject\XeroWebProject\obj\Debug\netcoreapp3.1\XeroWebProject.MvcApplicationPartsAssemblyInfo.cache
