@@ -8,7 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="JavaScriptEngineSwitcher.Extensions.MsDependencyInjection" Version="3.3.0" />
+    <PackageReference Include="JavaScriptEngineSwitcher.V8" Version="3.5.5" />
+    <PackageReference Include="JavaScriptEngineSwitcher.V8.Native.win-x64" Version="3.5.5" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
+    <PackageReference Include="React.AspNet" Version="5.2.6" />
   </ItemGroup>
 
 </Project>

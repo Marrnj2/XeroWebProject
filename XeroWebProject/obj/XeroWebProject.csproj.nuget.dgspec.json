@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Polytech\\Year3\\Semester 2\\Project\\XeroWebProject\\XeroWebProject\\XeroWebProject.csproj": {}
+    "C:\\Project\\XeroWebProject\\XeroWebProject\\XeroWebProject.csproj": {}
   },
   "projects": {
-    "E:\\Polytech\\Year3\\Semester 2\\Project\\XeroWebProject\\XeroWebProject\\XeroWebProject.csproj": {
+    "C:\\Project\\XeroWebProject\\XeroWebProject\\XeroWebProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Polytech\\Year3\\Semester 2\\Project\\XeroWebProject\\XeroWebProject\\XeroWebProject.csproj",
+        "projectUniqueName": "C:\\Project\\XeroWebProject\\XeroWebProject\\XeroWebProject.csproj",
         "projectName": "XeroWebProject",
-        "projectPath": "E:\\Polytech\\Year3\\Semester 2\\Project\\XeroWebProject\\XeroWebProject\\XeroWebProject.csproj",
+        "projectPath": "C:\\Project\\XeroWebProject\\XeroWebProject\\XeroWebProject.csproj",
         "packagesPath": "C:\\Users\\horrjd1\\.nuget\\packages\\",
-        "outputPath": "E:\\Polytech\\Year3\\Semester 2\\Project\\XeroWebProject\\XeroWebProject\\obj\\",
+        "outputPath": "C:\\Project\\XeroWebProject\\XeroWebProject\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\horrjd1\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -38,9 +38,25 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "JavaScriptEngineSwitcher.Extensions.MsDependencyInjection": {
+              "target": "Package",
+              "version": "[3.3.0, )"
+            },
+            "JavaScriptEngineSwitcher.V8": {
+              "target": "Package",
+              "version": "[3.5.5, )"
+            },
+            "JavaScriptEngineSwitcher.V8.Native.win-x64": {
+              "target": "Package",
+              "version": "[3.5.5, )"
+            },
             "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
               "target": "Package",
               "version": "[1.10.9, )"
+            },
+            "React.AspNet": {
+              "target": "Package",
+              "version": "[5.2.6, )"
             }
           },
           "imports": [
