@@ -5,7 +5,7 @@
     <RestoreTool Condition=" '$(RestoreTool)' == '' ">NuGet</RestoreTool>
     <ProjectAssetsFile Condition=" '$(ProjectAssetsFile)' == '' ">$(MSBuildThisFileDirectory)project.assets.json</ProjectAssetsFile>
     <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">$(UserProfile)\.nuget\packages\</NuGetPackageRoot>
-    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\horrjd1\.nuget\packages\</NuGetPackageFolders>
+    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\Jamie\.nuget\packages\</NuGetPackageFolders>
     <NuGetProjectStyle Condition=" '$(NuGetProjectStyle)' == '' ">PackageReference</NuGetProjectStyle>
     <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">5.6.0</NuGetToolVersion>
   </PropertyGroup>
@@ -17,7 +17,7 @@
     <Import Project="$(NuGetPackageRoot)javascriptengineswitcher.v8.native.win-x64\3.5.5\build\netcoreapp3.1\JavaScriptEngineSwitcher.V8.Native.win-x64.props" Condition="Exists('$(NuGetPackageRoot)javascriptengineswitcher.v8.native.win-x64\3.5.5\build\netcoreapp3.1\JavaScriptEngineSwitcher.V8.Native.win-x64.props')" />
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <PkgMicrosoft_VisualStudio_Azure_Containers_Tools_Targets Condition=" '$(PkgMicrosoft_VisualStudio_Azure_Containers_Tools_Targets)' == '' ">C:\Users\horrjd1\.nuget\packages\microsoft.visualstudio.azure.containers.tools.targets\1.10.9</PkgMicrosoft_VisualStudio_Azure_Containers_Tools_Targets>
-    <PkgJavaScriptEngineSwitcher_V8_Native_win-x64 Condition=" '$(PkgJavaScriptEngineSwitcher_V8_Native_win-x64)' == '' ">C:\Users\horrjd1\.nuget\packages\javascriptengineswitcher.v8.native.win-x64\3.5.5</PkgJavaScriptEngineSwitcher_V8_Native_win-x64>
+    <PkgMicrosoft_VisualStudio_Azure_Containers_Tools_Targets Condition=" '$(PkgMicrosoft_VisualStudio_Azure_Containers_Tools_Targets)' == '' ">C:\Users\Jamie\.nuget\packages\microsoft.visualstudio.azure.containers.tools.targets\1.10.9</PkgMicrosoft_VisualStudio_Azure_Containers_Tools_Targets>
+    <PkgJavaScriptEngineSwitcher_V8_Native_win-x64 Condition=" '$(PkgJavaScriptEngineSwitcher_V8_Native_win-x64)' == '' ">C:\Users\Jamie\.nuget\packages\javascriptengineswitcher.v8.native.win-x64\3.5.5</PkgJavaScriptEngineSwitcher_V8_Native_win-x64>
   </PropertyGroup>
 </Project>

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Project\\XeroWebProject\\XeroWebProject\\XeroWebProject.csproj": {}
+    "C:\\Users\\Jamie\\Documents\\Polytech\\XeroWebProject\\XeroWebProject\\XeroWebProject.csproj": {}
   },
   "projects": {
-    "C:\\Project\\XeroWebProject\\XeroWebProject\\XeroWebProject.csproj": {
+    "C:\\Users\\Jamie\\Documents\\Polytech\\XeroWebProject\\XeroWebProject\\XeroWebProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Project\\XeroWebProject\\XeroWebProject\\XeroWebProject.csproj",
+        "projectUniqueName": "C:\\Users\\Jamie\\Documents\\Polytech\\XeroWebProject\\XeroWebProject\\XeroWebProject.csproj",
         "projectName": "XeroWebProject",
-        "projectPath": "C:\\Project\\XeroWebProject\\XeroWebProject\\XeroWebProject.csproj",
-        "packagesPath": "C:\\Users\\horrjd1\\.nuget\\packages\\",
-        "outputPath": "C:\\Project\\XeroWebProject\\XeroWebProject\\obj\\",
+        "projectPath": "C:\\Users\\Jamie\\Documents\\Polytech\\XeroWebProject\\XeroWebProject\\XeroWebProject.csproj",
+        "packagesPath": "C:\\Users\\Jamie\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Jamie\\Documents\\Polytech\\XeroWebProject\\XeroWebProject\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\horrjd1\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Jamie\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -49,10 +49,6 @@
             "JavaScriptEngineSwitcher.V8.Native.win-x64": {
               "target": "Package",
               "version": "[3.5.5, )"
-            },
-            "Microsoft.AspNetCore.NodeServices": {
-              "target": "Package",
-              "version": "[3.1.6, )"
             },
             "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
               "target": "Package",
