@@ -1,0 +1,14 @@
+{
+  "version": "1.0.0",
+  "name": "asp.net",
+  "private": true,
+  "devDependencies": {
+    "@material-ui/core": "4.11.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "gulp": "4.0.2"
+  },
+  "dependencies": {
+    "gulp-cached": "^1.1.1"
+  }
+}
