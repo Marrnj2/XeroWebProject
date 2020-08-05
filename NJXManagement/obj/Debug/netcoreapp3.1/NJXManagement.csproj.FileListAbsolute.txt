@@ -114,3 +114,4 @@ C:\Users\jamie\Documents\XeroWebProject\NJXManagement\obj\Debug\netcoreapp3.1\st
 C:\Users\jamie\Documents\XeroWebProject\NJXManagement\obj\Debug\netcoreapp3.1\NJXManagement.dll
 C:\Users\jamie\Documents\XeroWebProject\NJXManagement\obj\Debug\netcoreapp3.1\NJXManagement.pdb
 C:\Users\jamie\Documents\XeroWebProject\NJXManagement\obj\Debug\netcoreapp3.1\NJXManagement.genruntimeconfig.cache
+C:\Users\jamie\Documents\XeroWebProject\NJXManagement\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
