@@ -2596,19 +2596,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\horrjd1\\.nuget\\packages\\": {}
+    "C:\\Users\\jamie\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Project\\XeroWebProject\\NJXManagement\\NJXManagement.csproj",
+      "projectUniqueName": "C:\\Users\\jamie\\Documents\\XeroWebProject\\NJXManagement\\NJXManagement.csproj",
       "projectName": "NJXManagement",
-      "projectPath": "C:\\Project\\XeroWebProject\\NJXManagement\\NJXManagement.csproj",
-      "packagesPath": "C:\\Users\\horrjd1\\.nuget\\packages\\",
-      "outputPath": "C:\\Project\\XeroWebProject\\NJXManagement\\obj\\",
+      "projectPath": "C:\\Users\\jamie\\Documents\\XeroWebProject\\NJXManagement\\NJXManagement.csproj",
+      "packagesPath": "C:\\Users\\jamie\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\jamie\\Documents\\XeroWebProject\\NJXManagement\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\horrjd1\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\jamie\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

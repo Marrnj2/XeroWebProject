@@ -11,4 +11,8 @@
     <PackageReference Include="React.AspNet" Version="5.2.6" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\fonts\" />
+  </ItemGroup>
+
 </Project>

@@ -1,6 +1,4 @@
-﻿import Button from '../../wwwroot/node_modules/@material-ui/core/Button';
-
-class CommentBox extends React.Component {
+﻿class CommentBox extends React.Component {
     render() {
         return (
                 <div className="commentBox">
