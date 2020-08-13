@@ -1,7 +1,11 @@
 ﻿class CommentBox extends React.Component {
     render() {
         return (
-            <div className="commentBox">Hello, world! I am a CommentBox.</div>
+        <>
+                <span data-xero-sso data-label="Sign in with Xero"></span>
+                <script src="https://edge.xero.com/platform/sso/xero-sso.js" async defer></script>
+        </>
+
         );
     }
 }
