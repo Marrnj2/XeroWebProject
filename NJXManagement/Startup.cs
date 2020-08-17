@@ -14,6 +14,10 @@ using JavaScriptEngineSwitcher.Extensions.MsDependencyInjection;
 using React.AspNet;
 
 
+using Microsoft.EntityFrameworkCore;
+using NJXManagement.Data;
+
+
 namespace NJXManagement
 {
     public class Startup
@@ -36,6 +40,10 @@ namespace NJXManagement
               .AddV8();
 
             services.AddControllersWithViews();
+
+            services.AddDbContext<DatabaseContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("databaseContext")));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
