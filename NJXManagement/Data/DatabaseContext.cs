@@ -15,6 +15,6 @@ namespace NJXManagement.Data
         {
         }
 
-        public DbSet<NJXManagement.Models.Movie> Movie { get; set; }
+        public DbSet<NJXManagement.Models.Student> Student { get; set; }
     }
 }
