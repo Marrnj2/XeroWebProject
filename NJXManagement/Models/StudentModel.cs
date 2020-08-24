@@ -12,8 +12,5 @@ namespace NJXManagement.Models
         public int StudentID { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }
-
-        [DataType(DataType.Date)]
-        public DateTime EnrolmentDate { get; set; }
     }
 }
