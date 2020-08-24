@@ -19,6 +19,10 @@ using Xero.NetStandard.OAuth2.Client;
 using Xero.NetStandard.OAuth2.Config;
 using Xero.NetStandard.OAuth2.Token;
 
+using Microsoft.EntityFrameworkCore;
+using NJXManagement.Data;
+
+
 namespace NJXManagement
 {
     public class Startup
@@ -109,6 +113,8 @@ namespace NJXManagement
 
             services.AddControllersWithViews();
           
+            services.AddDbContext<DatabaseContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("databaseContext")));
         }
 
 
