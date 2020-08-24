@@ -30,6 +30,7 @@ namespace NJXManagement
                 {
                     var logger = services.GetRequiredService<ILogger<Program>>();
                     logger.LogError(ex, "An error occurred seeding the DB.");
+                    Console.WriteLine("error occured?");
                 }
             }
 

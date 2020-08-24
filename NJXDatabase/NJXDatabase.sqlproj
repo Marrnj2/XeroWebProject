@@ -58,7 +58,7 @@
     <Folder Include="Properties" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="TestStudent.sql" />
+    <Build Include="Student.sql" />
     <Build Include="TestCourse.sql" />
     <Build Include="TestEnrollment.sql" />
   </ItemGroup>

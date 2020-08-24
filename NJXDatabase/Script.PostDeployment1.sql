@@ -22,7 +22,7 @@ WHEN NOT MATCHED BY TARGET THEN
 INSERT (Title, Credits) 
 VALUES (Title, Credits);
 
-MERGE INTO TestStudent AS Target
+MERGE INTO Student AS Target
 USING (VALUES 
         (1, 'Tibbetts', 'Donnie', '2013-09-01'), 
         (2, 'Guzman', 'Liza', '2012-01-13'), 

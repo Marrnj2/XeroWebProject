@@ -29,6 +29,9 @@ namespace NJXManagement.Models
                         EnrolmentDate = DateTime.Parse("2018-2-12")
                     }
                 );
+
+                Console.WriteLine("made it to here");
+
                 context.SaveChanges();
             }
         }

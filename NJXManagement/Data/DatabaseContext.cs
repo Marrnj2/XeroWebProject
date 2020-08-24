@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using NJXManagement.Models;
 
 namespace NJXManagement.Data
 {
@@ -15,6 +16,6 @@ namespace NJXManagement.Data
         {
         }
 
-        public DbSet<NJXManagement.Models.Student> Student { get; set; }
+        public DbSet<Student> Student { get; set; }
     }
 }

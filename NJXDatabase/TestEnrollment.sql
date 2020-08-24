@@ -7,5 +7,5 @@
     CONSTRAINT [FK_dbo.Enrollment_dbo.Course_CourseID] FOREIGN KEY ([CourseID]) 
         REFERENCES [dbo].[TestCourse] ([CourseID]) ON DELETE CASCADE,
     CONSTRAINT [FK_dbo.Enrollment_dbo.Student_StudentID] FOREIGN KEY ([StudentID]) 
-        REFERENCES [dbo].[TestStudent] ([StudentID]) ON DELETE CASCADE
+        REFERENCES [dbo].[Student] ([StudentID]) ON DELETE CASCADE
 )
