@@ -5,9 +5,33 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Client\src\css\site.css" />
+    <None Remove="Client\src\js\Index.jsx" />
+    <None Remove="Client\src\js\site.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Client\src\css\site.css">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Client\src\js\Index.jsx">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Client\src\js\site.js">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="JavaScriptEngineSwitcher.Extensions.MsDependencyInjection" Version="3.3.0" />
     <PackageReference Include="JavaScriptEngineSwitcher.V8" Version="3.5.5" />
     <PackageReference Include="JavaScriptEngineSwitcher.V8.Native.win-x64" Version="3.5.5" />
+    <PackageReference Include="Microsoft.AspNet.Identity.EntityFramework" Version="2.2.3" />
+    <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="3.1.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.7" />
