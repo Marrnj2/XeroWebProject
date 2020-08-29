@@ -1,4 +1,5 @@
 const path = require('path');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
     entry: {
@@ -6,15 +7,16 @@ module.exports = {
         bootstrap_js: './src/js/bootstrap_js.js',
         validation: './src/js/validation.js',
         index: './src/js/index.js'
-    },
-    output: {
-        filename: '[name].entry.js',
+     },
+output: {
+    filename: '[name].entry.js',
         path: path.resolve(__dirname, '..', 'wwwroot', 'dist')
-    },
-    devtool: 'source-map',
+},
+devtool: 'source-map',
     mode: 'development',
     module: {
         rules: [
+
             { test: /\.css$/, use: [{ loader: MiniCssExtractPlugin.loader }, "css-loader"] },
             { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file-loader" },
             { test: /\.(woff|woff2)$/, loader: "url-loader?prefix=font/&limit=5000" },
@@ -24,7 +26,7 @@ module.exports = {
     },
     plugins: [
         new MiniCssExtractPlugin({
-        filename: "[name].css"
+            filename: "[name].css"
         })
     ]
-};
+ };
