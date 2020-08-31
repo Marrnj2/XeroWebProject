@@ -7,9 +7,12 @@
 @section Scripts
 {
     <script type="module" src="~/dist/index.entry.js" defer></script>
+    <script type="module" src="~/dist/CommentBox.entry.js" defer></script>
+    <script type="module" src="~/dist/Test.entry.js" defer></script>
 }
 
 <div id="content"></div>
+<div id="test"></div>
 
 
 <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/16.13.0/umd/react.development.js"></script>
@@ -17,4 +20,3 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/1.7.1/remarkable.min.js"></script>
 <span data-xero-sso data-href="/home/signin" data-label="Sign in with Xero"></span>
 <script src="https://edge.xero.com/platform/sso/xero-sso.js"></script>
-<script src="@Url.Content("~/dist/CommentBox.jsx")"></script>

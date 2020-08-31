@@ -16,7 +16,7 @@ devtool: 'source-map',
     mode: 'development',
     module: {
         rules: [
-
+            { test: /\.(jsx)$/,  exclude: /node_modules/, loader: 'babel-loader', query: { presets: ['@babel/react'] } },
             { test: /\.css$/, use: [{ loader: MiniCssExtractPlugin.loader }, "css-loader"] },
             { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file-loader" },
             { test: /\.(woff|woff2)$/, loader: "url-loader?prefix=font/&limit=5000" },
