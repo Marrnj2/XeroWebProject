@@ -25,7 +25,6 @@
   },
   "scripts": {
     "build": "webpack",
-    "watch": "webpack --watch",
-    "debug": "dotnet run"
+    "watch": "webpack --watch"
   }
 }
