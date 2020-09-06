@@ -1,7 +1,7 @@
-﻿import { Card, Button, Alert } from "tabler-react";
+﻿import React from 'react';
+import { Card, Button, Alert } from "tabler-react";
 
-class CommentBox extends React.Component {
-    render() {
+function CommentBox() {
         return (
             <>
                 <Alert type="primary" hasExtraSpace>hello</Alert>
@@ -16,7 +16,6 @@ class CommentBox extends React.Component {
                 </Card>
             </>
         );
-    }
 }
 
-ReactDOM.render(<CommentBox />, document.getElementById('content'));
+export default CommentBox
