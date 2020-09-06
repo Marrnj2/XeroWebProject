@@ -1,10 +1,10 @@
 ﻿import React from 'react';
 import ReactDOM from 'react-dom';
-import CommentBox from './components/CommentBox';
+import LoginForm from './components/LoginForm';
 
 ReactDOM.render(
     <>
-        <CommentBox/>
+        <LoginForm/>
     </>,
     document.getElementById('content')
 );
