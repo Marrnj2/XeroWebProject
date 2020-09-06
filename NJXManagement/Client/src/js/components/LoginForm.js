@@ -1,11 +1,12 @@
 ﻿import React, {Component} from "react";
-import { Card, Button, Form } from "tabler-react";
+import { Card, Button, Form, Header } from "tabler-react";
 
 class LoginForm extends Component {
     render() {
         return (
             <Card>
                 <Card.Body>
+                <Header.H4>Login to your Account</Header.H4>
                 <Form>
                     <Form.Input name='email' label='Email Address' placeholder='Enter Email' />
                     <Form.Input name="password" label="Password" placeholder="Enter Password" type="password" />
