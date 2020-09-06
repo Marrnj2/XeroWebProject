@@ -4,19 +4,18 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
     entry: {
         site: './src/js/site.js',
-        bootstrap_js: './src/js/bootstrap_js.js',
         validation: './src/js/validation.js',
         index: './src/js/index.js'
      },
-output: {
-    filename: '[name].entry.js',
-        path: path.resolve(__dirname, '..', 'wwwroot', 'dist')
-},
-devtool: 'source-map',
+    output: {
+        filename: '[name].entry.js',
+            path: path.resolve(__dirname, '..', 'wwwroot', 'dist')
+    },
+    devtool: 'source-map',
     mode: 'development',
     module: {
         rules: [
-            { test: /\.(js|jsx)$/,  exclude: /node_modules/, loader: 'babel-loader', query: { presets: ['@babel/react'] } },
+            { test: /\.(js|jsx)$/,  exclude: /node_modules/, loader: 'babel-loader'},
             { test: /\.css$/, use: [{ loader: MiniCssExtractPlugin.loader }, "css-loader"] },
             { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file-loader" },
             { test: /\.(woff|woff2)$/, loader: "url-loader?prefix=font/&limit=5000" },
