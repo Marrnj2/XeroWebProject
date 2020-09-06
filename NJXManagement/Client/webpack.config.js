@@ -2,6 +2,7 @@ const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
+    // May have to add the js files for each page?
     entry: {
         site: './src/js/site.js',
         validation: './src/js/validation.js',

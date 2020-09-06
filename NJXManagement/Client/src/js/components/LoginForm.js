@@ -1,6 +1,10 @@
 ﻿import React, {Component} from "react";
 import { Card, Button, Form, Header } from "tabler-react";
 
+/**
+ * A form to be displayed to allow the user to login
+ * @component
+ */
 class LoginForm extends Component {
     render() {
         return (
