@@ -1,0 +1,37 @@
+@page
+@model NJXManagement.Views_User.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>User</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.User.fullName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.User.fullName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.User.email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.User.email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.User.pwd)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.User.pwd)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.User.userID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

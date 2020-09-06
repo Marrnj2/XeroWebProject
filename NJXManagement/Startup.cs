@@ -114,7 +114,7 @@ namespace NJXManagement
             services.AddControllersWithViews();
           
             services.AddDbContext<DatabaseContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("databaseContext")));
+                options.UseSqlServer(Configuration.GetConnectionString("DatabaseContext")));
         }
 
 
