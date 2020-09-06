@@ -15,7 +15,7 @@ module.exports = {
     mode: 'development',
     module: {
         rules: [
-            { test: /\.(js|jsx)$/,  exclude: /node_modules/, loader: 'babel-loader'},
+            { test: /\.(js)$/,  exclude: /node_modules/, loader: 'babel-loader'},
             { test: /\.css$/, use: [{ loader: MiniCssExtractPlugin.loader }, "css-loader"] },
             { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file-loader" },
             { test: /\.(woff|woff2)$/, loader: "url-loader?prefix=font/&limit=5000" },

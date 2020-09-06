@@ -1,4 +1,10 @@
-﻿import CommentBox from './components/CommentBox.jsx';
-import Test from './components/Test.jsx';
+﻿import React from 'react';
+import ReactDOM from 'react-dom';
+import CommentBox from './components/CommentBox';
 
-console.log('The \'index\' bundle has been loaded');
+ReactDOM.render(
+    <>
+        <CommentBox/>
+    </>,
+    document.getElementById('content')
+);
