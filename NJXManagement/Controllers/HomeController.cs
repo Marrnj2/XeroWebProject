@@ -111,5 +111,26 @@ namespace NJXManagement.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+
+
+        public IActionResult Contact()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Contact(ContactViewModel contactVM)
+        {
+            if (ModelState.IsValid)
+            {
+                // Send an email or save the message in a table...
+                // Redirect to a page that says "Thanks for contacting us!"...
+
+                return RedirectToAction("Index");
+            }
+
+            return View();
+        }
     }
 }
