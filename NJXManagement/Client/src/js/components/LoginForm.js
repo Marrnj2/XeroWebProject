@@ -1,10 +1,9 @@
-﻿import React, { Component } from "react";
+﻿import React from "react";
 import { makeStyles } from "@material-ui/styles";
 import { Card, Button, Form, Header } from "tabler-react";
 
 const useStyles = makeStyles({
   root: {
-    color: 'red',
   },
 });
 
