@@ -3,6 +3,7 @@ using JavaScriptEngineSwitcher.V8;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
@@ -20,7 +21,8 @@ using Xero.NetStandard.OAuth2.Config;
 using Xero.NetStandard.OAuth2.Token;
 using Microsoft.EntityFrameworkCore;
 using NJXManagement.Data;
-using Microsoft.AspNetCore.Hosting;
+
+
 namespace NJXManagement
 {
     public class Startup
@@ -112,16 +114,19 @@ namespace NJXManagement
           
             if (Environment.IsDevelopment())
             {
-              services.AddDbContext<DatabaseContext>(options =>
+              services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlite(
                 Configuration.GetConnectionString("LocalContext")));
             }
 
             else{
-                services.AddDbContext<DatabaseContext>(options =>
+                services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DatabaseContext")));
             }
+
+            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddEntityFrameworkStores<ApplicationDbContext>();
         }
         private static Func<TokenValidatedContext, Task> OnTokenValidated()
         {
@@ -151,6 +156,7 @@ namespace NJXManagement
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
             }
             else
             {

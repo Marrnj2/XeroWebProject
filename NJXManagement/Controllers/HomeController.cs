@@ -11,6 +11,7 @@ using NJXManagement.Extensions;
 using NJXManagement.Models;
 using Xero.NetStandard.OAuth2.Api;
 using Xero.NetStandard.OAuth2.Client;
+using Microsoft.Extensions.Logging;
 
 namespace NJXManagement.Controllers
 {
