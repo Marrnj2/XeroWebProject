@@ -18,27 +18,24 @@ using Xero.NetStandard.OAuth2.Api;
 using Xero.NetStandard.OAuth2.Client;
 using Xero.NetStandard.OAuth2.Config;
 using Xero.NetStandard.OAuth2.Token;
-
 using Microsoft.EntityFrameworkCore;
 using NJXManagement.Data;
-
-
+using Microsoft.AspNetCore.Hosting;
 namespace NJXManagement
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration,IWebHostEnvironment env)
         {
+            Environment = env;
             Configuration = configuration;
         }
-
         public IConfiguration Configuration { get; }
-
+        public IWebHostEnvironment Environment { get; }
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddHttpClient();
-
             services.TryAddSingleton(new XeroConfiguration
             {
                 ClientId = Configuration["Xero:ClientId"],
@@ -113,11 +110,19 @@ namespace NJXManagement
 
             services.AddControllersWithViews();
           
-            services.AddDbContext<DatabaseContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("databaseContext")));
+            if (Environment.IsDevelopment())
+            {
+              services.AddDbContext<DatabaseContext>(options =>
+                options.UseSqlite(
+                Configuration.GetConnectionString("LocalContext")));
+            }
+
+            else{
+                services.AddDbContext<DatabaseContext>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("DatabaseContext")));
+            }
         }
-
-
         private static Func<TokenValidatedContext, Task> OnTokenValidated()
         {
             return context =>
