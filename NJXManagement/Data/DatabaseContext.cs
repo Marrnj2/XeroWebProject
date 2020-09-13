@@ -16,6 +16,5 @@ namespace NJXManagement.Data
         {
         }
 
-        public DbSet<User> User { get; set; }
     }
 }
