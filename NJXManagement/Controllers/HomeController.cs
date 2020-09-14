@@ -43,7 +43,7 @@ namespace NJXManagement.Controllers
         public async Task<IActionResult> OutstandingInvoices()
         {
             var token = await _tokenStore.GetAccessTokenAsync(User.XeroUserId());
-
+      
             var connections = await _xeroClient.GetConnectionsAsync(token);
 
             if (!connections.Any())

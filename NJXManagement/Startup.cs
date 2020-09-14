@@ -20,7 +20,6 @@ using Xero.NetStandard.OAuth2.Config;
 using Xero.NetStandard.OAuth2.Token;
 using Microsoft.EntityFrameworkCore;
 using NJXManagement.Data;
-using Microsoft.AspNetCore.Hosting;
 namespace NJXManagement
 {
     public class Startup
@@ -73,9 +72,6 @@ namespace NJXManagement
                     OnTokenValidated = OnTokenValidated()
                 };
                 })
-
-
-
                 .AddOpenIdConnect("XeroSignUp", options =>
                 {
                     options.Authority = "https://identity.xero.com";
