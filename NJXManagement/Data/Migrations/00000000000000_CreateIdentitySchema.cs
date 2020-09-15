@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace TestAuth.Data.Migrations
+namespace NJXManagement.Data.Migrations
 {
     public partial class CreateIdentitySchema : Migration
     {

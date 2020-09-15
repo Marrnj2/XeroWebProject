@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NJXManagement", "NJXManagement.csproj", "{797D5B39-4137-4472-835C-32CD5DC84038}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NJXManagement", "NJXManagement.csproj", "{BEAE2EC8-E7A7-4850-A119-69DD558CF84B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{797D5B39-4137-4472-835C-32CD5DC84038}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{797D5B39-4137-4472-835C-32CD5DC84038}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{797D5B39-4137-4472-835C-32CD5DC84038}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{797D5B39-4137-4472-835C-32CD5DC84038}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEAE2EC8-E7A7-4850-A119-69DD558CF84B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEAE2EC8-E7A7-4850-A119-69DD558CF84B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEAE2EC8-E7A7-4850-A119-69DD558CF84B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEAE2EC8-E7A7-4850-A119-69DD558CF84B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {526720C9-814E-4CFF-A9CB-AA316F4EA5ED}
+		SolutionGuid = {E35CEB28-4F71-4623-AEF7-F46B8336521D}
 	EndGlobalSection
 EndGlobal
