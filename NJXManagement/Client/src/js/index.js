@@ -4,7 +4,6 @@ import LoginForm from './components/LoginForm';
 
 ReactDOM.render(
     <>
-        <LoginForm/>
     </>,
     document.getElementById('content')
 );
