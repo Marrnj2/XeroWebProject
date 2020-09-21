@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30320.27
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "NJXDatabase", "NJXDatabase.sqlproj", "{C57D9CAB-0463-4B24-BE06-CE046E6121CF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C57D9CAB-0463-4B24-BE06-CE046E6121CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C57D9CAB-0463-4B24-BE06-CE046E6121CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C57D9CAB-0463-4B24-BE06-CE046E6121CF}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{C57D9CAB-0463-4B24-BE06-CE046E6121CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C57D9CAB-0463-4B24-BE06-CE046E6121CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C57D9CAB-0463-4B24-BE06-CE046E6121CF}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6A035D13-8D58-4C33-903A-04E15F9696A4}
+	EndGlobalSection
+EndGlobal
