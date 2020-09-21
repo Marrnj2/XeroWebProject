@@ -28,6 +28,7 @@
   "scripts": {
     "build": "webpack",
     "watch": "webpack --watch",
-    "debug": "cd .. && dotnet run"
+    "debug": "cd .. && dotnet run",
+    "production": "cd.. && dotnet NJXManagement.dll"
   }
 }
