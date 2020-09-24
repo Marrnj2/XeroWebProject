@@ -1,10 +1,12 @@
 ﻿import React from 'react';
 import ReactDOM from 'react-dom';
-import LoginForm from './components/LoginForm';
+import SideMenu from './components/navigation/side-menu';
+import TopNav from './components/navigation/top-nav';
 
 ReactDOM.render(
     <>
-        <LoginForm/>
+        <SideMenu/>
+        
     </>,
     document.getElementById('content')
 );
