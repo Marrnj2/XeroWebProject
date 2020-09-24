@@ -28,6 +28,21 @@ namespace NJXManagement.Controllers
             return View();
         }
 
+        public IActionResult Employees()
+        {
+            return View();
+        }
+
+        public IActionResult PayRun()
+        {
+            return View();
+        }
+
+        public IActionResult Leave()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
