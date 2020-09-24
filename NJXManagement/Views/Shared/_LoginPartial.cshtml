@@ -2,11 +2,6 @@
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
-@section Scripts
-{
-    <script type="module" src="~/dist/index.entry.js" defer></script>
-}
-
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))
 {
@@ -29,6 +24,3 @@ else
     </li>
 }
 </ul>
-
-@* Content gets filled by index.js *@
-<div id="content"></div>

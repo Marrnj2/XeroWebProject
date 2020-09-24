@@ -6,6 +6,7 @@ import TopNav from './components/navigation/top-nav';
 ReactDOM.render(
     <>
         <SideMenu/>
+        
     </>,
     document.getElementById('content')
 );
