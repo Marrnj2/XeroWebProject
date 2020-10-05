@@ -50,7 +50,7 @@ namespace NJXManagement
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ApplicationDbContext dataContext)
         {
             if (env.IsDevelopment())
             {
@@ -69,6 +69,8 @@ namespace NJXManagement
             app.UseSpaStaticFiles();
 
             app.UseRouting();
+
+            dataContext.Database.Migrate();
 
             app.UseAuthentication();
             app.UseIdentityServer();
