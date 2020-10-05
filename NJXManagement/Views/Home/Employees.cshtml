@@ -1,6 +1,15 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{
     ViewData["Title"] = "Employees";
 }
 <h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+
+@section Scripts
+{
+    <script type="module" src="~/dist/employees.entry.js" defer></script>
+}
+<div id="employees"></div>
