@@ -339,6 +339,4 @@ ASALocalRun/
 # BeatPulse healthcheck temp database
 healthchecksdb
 
-
-NJXManagement/wwwroot/dist/
 NJXManagement/appsettings.json
