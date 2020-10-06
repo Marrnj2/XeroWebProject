@@ -1,0 +1,21 @@
+html {
+    background-color: #F0F0F0;
+}
+
+#root {
+    background-color: #F0F0F0;
+}
+
+.cards {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-gap: 1rem;
+  }
+  @media (min-width: 900px) {
+    .cards { grid-template-columns: repeat(2, 1fr); }
+  }
+  .card-paper {
+    padding: 1rem;
+    border-radius: 0.5rem;
+  }

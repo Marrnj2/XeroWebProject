@@ -54,30 +54,21 @@ function SideMenu() {
       <div className={classes.toolbar} />
       <Divider />
       <List>
+      <a className={classes.a} href="/bankaccounts">
+          <ListItem button key={"Bank Accounts"}>
+            <ListItemIcon>
+              <PaymentIcon />
+            </ListItemIcon>
+            <ListItemText primary={"Bank Accounts"} />
+          </ListItem>
+        </a>
+
         <a className={classes.a} href="/employees">
           <ListItem button key={"Employees"}>
             <ListItemIcon>
               <PersonIcon />
             </ListItemIcon>
             <ListItemText primary={"Employees"} />
-          </ListItem>
-        </a>
-
-        <a className={classes.a} href="/payrun">
-          <ListItem button key={"Pay Employees"}>
-            <ListItemIcon>
-              <PaymentIcon />
-            </ListItemIcon>
-            <ListItemText primary={"Pay Employees"} />
-          </ListItem>
-        </a>
-
-        <a className={classes.a} href="/leave">
-          <ListItem button key={"Leave"}>
-            <ListItemIcon>
-              <InboxIcon />
-            </ListItemIcon>
-            <ListItemText primary={"Leave"} />
           </ListItem>
         </a>
       </List>
