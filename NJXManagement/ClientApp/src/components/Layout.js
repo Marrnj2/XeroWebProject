@@ -3,19 +3,20 @@ import { Container } from 'reactstrap';
 import { NavMenu } from './NavMenu';
 import SideMenu from './side-menu';
 import './Layout.css';
+import ResponsiveDrawer from './SideMenu';
 
 export class Layout extends Component {
   static displayName = Layout.name;
 
   render () {
     return (
-      <div className="back">
-        <NavMenu />
-        <SideMenu />
-        <Container>
-          {this.props.children}
-        </Container>
-      </div>
+      <ResponsiveDrawer>
+        <div className="back">
+          <Container>
+            {this.props.children}
+          </Container>
+        </div>
+      </ResponsiveDrawer>
     );
   }
 }

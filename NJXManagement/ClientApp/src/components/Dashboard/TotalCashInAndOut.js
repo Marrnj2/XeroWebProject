@@ -29,11 +29,6 @@ const data = [
     out: 9800,
   },
   {
-    name: "Page D",
-    in: 2780,
-    out: 3908,
-  },
-  {
     name: "August",
     in: 1890,
     out: 4800,
