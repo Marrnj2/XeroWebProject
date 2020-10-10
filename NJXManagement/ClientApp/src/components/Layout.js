@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Container } from 'reactstrap';
 import { NavMenu } from './NavMenu';
-import SideMenu from './side-menu';
 import './Layout.css';
 import ResponsiveDrawer from './SideMenu';
 
