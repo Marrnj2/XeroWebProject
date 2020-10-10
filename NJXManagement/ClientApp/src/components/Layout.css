@@ -19,3 +19,7 @@ html {
     padding: 1rem;
     border-radius: 0.5rem;
   }
+
+  p {
+    color: #657796;
+  }

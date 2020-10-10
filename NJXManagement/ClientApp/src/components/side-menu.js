@@ -9,6 +9,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import PersonIcon from "@material-ui/icons/Person";
 import PaymentIcon from '@material-ui/icons/Payment';
+import HomeIcon from '@material-ui/icons/Home';
 
 const drawerWidth = 240;
 
@@ -54,6 +55,15 @@ function SideMenu() {
       <div className={classes.toolbar} />
       <Divider />
       <List>
+      <a className={classes.a} href="/">
+          <ListItem button key={"Dashboard"}>
+            <ListItemIcon>
+              <HomeIcon />
+            </ListItemIcon>
+            <ListItemText primary={"Dashboard"} />
+          </ListItem>
+        </a>
+
       <a className={classes.a} href="/bankaccounts">
           <ListItem button key={"Bank Accounts"}>
             <ListItemIcon>
