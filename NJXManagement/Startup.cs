@@ -43,14 +43,7 @@ namespace NJXManagement
             services.AddControllersWithViews();
             services.AddRazorPages();
 
-            services.AddHttpClient("requestCode", c =>
-            {
-                c.BaseAddress = new Uri("https://login.xero.com/identity/connect/authorize");
-                c.DefaultRequestHeaders.Add("response_type","code");
-                c.DefaultRequestHeaders.Add("client_id","F68F5B3DC51D422BA4A9CEBF499247CB");
-                c.DefaultRequestHeaders.Add("redirect_uri","https://localhost:5001/signin-oidc");
-                c.DefaultRequestHeaders.Add("scope","openid profile email accounting.transactions");
-            });
+
             
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

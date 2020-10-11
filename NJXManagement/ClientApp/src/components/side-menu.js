@@ -13,7 +13,7 @@ import PaymentIcon from '@material-ui/icons/Payment';
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
-  root: {
+  root: { 
     display: "flex"
   },
   appBar: {
