@@ -9,6 +9,8 @@ export class Layout extends Component {
 
   render () {
     return (
+      <>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
       <ResponsiveDrawer>
         <div className="back">
           <Container>
@@ -16,6 +18,7 @@ export class Layout extends Component {
           </Container>
         </div>
       </ResponsiveDrawer>
+      </>
     );
   }
 }
