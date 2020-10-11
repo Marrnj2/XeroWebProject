@@ -18,6 +18,8 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
+import { LoginMenu } from './api-authorization/LoginMenu';
+
 import PersonIcon from "@material-ui/icons/Person";
 import PaymentIcon from '@material-ui/icons/Payment';
 import HomeIcon from '@material-ui/icons/Home';
@@ -58,6 +60,9 @@ const useStyles = makeStyles((theme) => ({
   content: {
     flexGrow: 1,
     padding: theme.spacing(3),
+  },
+  title: {
+    flexGrow: 1,
   },
 }));
 
@@ -113,10 +118,11 @@ function ResponsiveDrawer(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap>
+          <Typography variant="h6" noWrap className={classes.title}>
             NJXManagement
           </Typography>
-          <Button color="inherit">Login</Button>
+          <LoginMenu>
+          </LoginMenu>
         </Toolbar>
       </AppBar>
 
