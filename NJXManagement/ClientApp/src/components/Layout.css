@@ -18,3 +18,9 @@ html {
   .component-grid {
     flex-grow: 1;
   }
+
+  .nav-item {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
