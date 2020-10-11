@@ -21,6 +21,17 @@ export class Home extends Component {
           <Grid item xs={12} sm={12} md={6}>
             <BusinessSavingsAccount/>
           </Grid>
+
+          <Grid item xs={12} sm={12} md={6}>
+            <TotalCashInAndOut/>
+          </Grid>
+          <Grid item xs={12} sm={12} md={6}>
+            <AccountWatchlist/>
+          </Grid>
+
+          <Grid item xs={12} sm={12} md={6}>
+            <Bills/>
+          </Grid>
         </Grid>
       </div>
     );
