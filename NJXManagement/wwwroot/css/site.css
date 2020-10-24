@@ -58,12 +58,12 @@ body {
   background-color: #F0F0F0;
 }
 
-#loginCard {
+#authCard {
   font-family: 'Roboto', sans-serif;
   margin-top: 100px;
 }
 
-#account .form-group {
+.card-body form .form-group {
   padding-top: 10px;
 }
 
