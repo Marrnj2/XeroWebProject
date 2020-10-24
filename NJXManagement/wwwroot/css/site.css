@@ -1,5 +1,8 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\
-for details on configuring this project to bundle and minify static web assets. */
+﻿/* This css file is used exclusively for the login and registration pages as they are made with cshtml */
+
+/* material ui font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 
 a.navbar-brand {
   white-space: normal;
@@ -47,11 +50,14 @@ button.accept-policy {
 html {
   position: relative;
   min-height: 100%;
+  background-color: #F0F0F0;
+  font-family: 'Roboto', sans-serif;
 }
 
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
+  background-color: #F0F0F0;
 }
 .footer {
   position: absolute;
