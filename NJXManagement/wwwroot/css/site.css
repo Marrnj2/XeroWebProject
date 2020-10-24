@@ -67,3 +67,8 @@ body {
 #account .form-group {
   padding-top: 10px;
 }
+
+.auth-form-btn {
+  background-color: #3F51B5;
+  width: 100%;
+}
