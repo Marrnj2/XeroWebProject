@@ -1,0 +1,78 @@
+﻿/* This css file is used exclusively for the login and registration pages as they are made with cshtml */
+
+/* material ui font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.container {
+  max-width: 960px;
+}
+
+.pricing-header {
+  max-width: 700px;
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+  background-color: #F0F0F0;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  background-color: #F0F0F0;
+}
+
+#authCard {
+  font-family: 'Roboto', sans-serif;
+  margin-top: 100px;
+}
+
+.card-body form .form-group {
+  padding-top: 10px;
+}
+
+.auth-form-btn {
+  background-color: #3F51B5;
+  width: 100%;
+}
+
+.auto-margins {
+  margin-top: auto;
+  margin-bottom: auto;
+}

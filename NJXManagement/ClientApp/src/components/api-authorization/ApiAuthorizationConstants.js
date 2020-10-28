@@ -12,7 +12,7 @@ export const LogoutActions = {
 };
 
 export const LoginActions = {
-  Login: 'login',
+  Login: 'logins',
   LoginCallback: 'login-callback',
   LoginFailed: 'login-failed',
   Profile: 'profile',
