@@ -11,6 +11,8 @@ using NJXManagement.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
+using NJXManagement.HttpModel;
 
 namespace NJXManagement
 {
@@ -42,6 +44,11 @@ namespace NJXManagement
             services.AddControllersWithViews();
             services.AddRazorPages();
 
+
+
+            services.AddHttpClient();
+
+            services.AddHttpClient<RequestToken>();
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
