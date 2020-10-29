@@ -1,0 +1,28 @@
+/* Custom css for react front end */
+
+html {
+    background-color: #F0F0F0;
+}
+
+#root {
+    background-color: #F0F0F0;
+}
+
+  .card-paper {
+    padding: 1rem;
+    border-radius: 0.5rem;
+  }
+
+  p {
+    color: #808080;
+  }
+
+  .component-grid {
+    flex-grow: 1;
+  }
+
+  .nav-item {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
