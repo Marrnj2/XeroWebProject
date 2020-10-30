@@ -6,17 +6,18 @@ using NJXManagement.Models;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace NJXManagement.HttpModel
 {
-    public class RequestToken
+    public class XeroRequest
     {
         public HttpClient Client { get; }
 
-        public RequestToken(HttpClient client)
+        public XeroRequest(HttpClient client)
         {
            
             Client = client;
@@ -40,35 +41,37 @@ namespace NJXManagement.HttpModel
             });
             return accessToken;
         }
-        public async Task<BearerModel> BearerTokenAsync(TokenResponse accessToken)
+        public BearerModel BearerToken(TokenResponse accessToken)
         {
             var options = new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = false,
-                
+
             };
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get,
                 "https://api.xero.com/connections");
             request.Headers.Add("Authorization", "Bearer " + accessToken.AccessToken);
 
-            var response = await Client.SendAsync(request);
-            var responseStream = await response.Content.ReadAsStringAsync();
+            var response = Client.SendAsync(request).GetAwaiter().GetResult();
+            var responseStream = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
 
 
             var dict = JsonConvert.DeserializeObject<List<BearerModel>>(responseStream);
 
             return dict[0];
         }
-        public async Task<string> CallAPIAsync(TokenResponse accessToken,BearerModel bearerModel)
+        public string CallAPI(TokenResponse accessToken, BearerModel bearerModel, string endPoint)
         {
 
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get,
-                "https://api.xero.com/api.xro/2.0/Invoices");
+                "https://api.xero.com/api.xro/2.0/" + endPoint);
             request.Headers.Add("Authorization", "Bearer " + accessToken.AccessToken);
             request.Headers.Add("xero-tenant-id", bearerModel.TenantId);
 
-                var response = await Client.SendAsync(request);
-                var responseStream = await response.Content.ReadAsStringAsync();
+            var response = Client.SendAsync(request).GetAwaiter().GetResult();
+
+            var responseStream = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+
             return responseStream;
         }
     }

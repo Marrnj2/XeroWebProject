@@ -17,9 +17,10 @@ namespace NJXManagement.Controllers
 {
     public class HomeController : Controller
     {
-
-        private readonly RequestToken _client;
-        public  HomeController(RequestToken client)
+        static private TokenResponse _accessToken;
+        static private BearerModel _bearerModel;
+        private readonly XeroRequest _client;
+        public  HomeController(XeroRequest client)
         {
             _client = client;
         }
@@ -31,16 +32,24 @@ namespace NJXManagement.Controllers
             return Redirect(url);
         }
         [Route("signin-oidc")]
-        public async Task<IActionResult> MethodAsync()
+        public void Method()
         {
+
             var url = UriHelper.GetEncodedUrl(HttpContext.Request);
             Uri u = new Uri(url);
             string code = HttpUtility.ParseQueryString(u.Query).Get("code");
 
-            var token =  await _client.SendRequestAsync(code);
-            var otherThing = await _client.BearerTokenAsync(token);
-            var recall = await _client.CallAPIAsync(token, otherThing);
+            _accessToken = _client.SendRequestAsync(code).GetAwaiter().GetResult();
+            _bearerModel = _client.BearerToken(_accessToken);
+        }
+        [Route("GetData")]
+        public IActionResult TestData()
+        {
+
+            var recall = _client.CallAPI(_accessToken, _bearerModel, "Accounts");
+
             return Content(recall);
+
         }
     }
 }
