@@ -55,12 +55,20 @@ namespace NJXManagement.Controllers
             _accessToken = _client.SendRequestAsync(code).GetAwaiter().GetResult();
             _bearerModel = _client.BearerToken(_accessToken);
         }
-        [Route("GetData/{endPoint}")]
-        public IActionResult TestData(string endPoint)
+        [Route("Payroll/{endPoint}")]
+        public IActionResult FetchPayroll(string endPoint)
         {
 
-            var recall = _client.CallAPI(_accessToken, _bearerModel, endPoint);
+            var recall = _client.PayrollCall(_accessToken, _bearerModel, endPoint);
 
+            return Content(recall);
+
+        }
+        [Route("Xero/{endPoint}")]
+        public IActionResult FetchXero(string endPoint)
+        {
+
+            var recall = _client.AccountsCall(_accessToken, _bearerModel, endPoint);
             return Content(recall);
 
         }

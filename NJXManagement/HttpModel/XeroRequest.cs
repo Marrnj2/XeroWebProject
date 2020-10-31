@@ -62,13 +62,25 @@ namespace NJXManagement.HttpModel
 
             return dict[0];
         }
-        public string CallAPI(TokenResponse accessToken, BearerModel bearerModel, string endPoint)
+        public string PayrollCall(TokenResponse accessToken, BearerModel bearerModel, string endPoint)
         {
 
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get,
-              
+                              "https://api.xero.com/payroll.xro/2.0/" + endPoint);
+            request.Headers.Add("Authorization", "Bearer " + accessToken.AccessToken);
+            request.Headers.Add("xero-tenant-id", bearerModel.TenantId);
 
-                "https://api.xero.com/payroll.xro/2.0/" + endPoint);
+            var response = Client.SendAsync(request).GetAwaiter().GetResult();
+
+            var responseStream = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+
+            return responseStream;
+        }
+        public string AccountsCall(TokenResponse accessToken, BearerModel bearerModel, string endPoint)
+        {
+
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get,
+                    " 	https://api.xero.com/api.xro/2.0/" + endPoint);
             request.Headers.Add("Authorization", "Bearer " + accessToken.AccessToken);
             request.Headers.Add("xero-tenant-id", bearerModel.TenantId);
 
