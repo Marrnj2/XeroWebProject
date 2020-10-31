@@ -37,8 +37,7 @@ namespace NJXManagement.HttpModel
                 ClientId = "F68F5B3DC51D422BA4A9CEBF499247CB",
                 ClientSecret = "luTOFed4_aUl6c40c2ftH5fW_TL0ETybDfMq-faA1Z6Ht_j4",
                 RedirectUri = "https://localhost:5001/signin-oidc",
-                Parameters =
-                {
+                Parameters ={
                 { "scope", "openid profile email accounting.transactions accounting.contacts accounting.settingsoffline_access "}
                 }
             });
@@ -67,7 +66,9 @@ namespace NJXManagement.HttpModel
         {
 
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get,
-                "https://api.xero.com/payroll.xro/2.0/employees");
+              
+
+                "https://api.xero.com/payroll.xro/2.0/" + endPoint);
             request.Headers.Add("Authorization", "Bearer " + accessToken.AccessToken);
             request.Headers.Add("xero-tenant-id", bearerModel.TenantId);
 
