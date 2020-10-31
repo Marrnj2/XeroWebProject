@@ -12,6 +12,8 @@ using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using NJXManagement.HttpModel;
 using NJXManagement.Models;
+using Xero.NetStandard.OAuth2.Client;
+using Xero.NetStandard.OAuth2.Config;
 
 namespace NJXManagement.Controllers
 {
@@ -28,7 +30,18 @@ namespace NJXManagement.Controllers
         [HttpGet]
         public IActionResult Path()
         {
-            var url = "https://login.xero.com/identity/connect/authorize?response_type=code&client_id=F68F5B3DC51D422BA4A9CEBF499247CB&redirect_uri=https://localhost:5001/signin-oidc&scope=openid profile email accounting.transactions";
+            XeroConfiguration xconfig = new XeroConfiguration();
+
+            xconfig.ClientId = "F68F5B3DC51D422BA4A9CEBF499247CB";
+            xconfig.ClientSecret = "luTOFed4_aUl6c40c2ftH5fW_TL0ETybDfMq-faA1Z6Ht_j4";
+            xconfig.CallbackUri = new Uri("https://localhost:5001/signin-oidc");
+
+            xconfig.Scope = "openid profile email files accounting.transactions accounting.contacts payroll.employees offline_access";
+
+            var XRequest = new XeroClient(xconfig);
+
+            var url = XRequest.BuildLoginUri();
+
             return Redirect(url);
         }
         [Route("signin-oidc")]
