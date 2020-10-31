@@ -36,7 +36,7 @@ namespace NJXManagement.HttpModel
                 RedirectUri = "https://localhost:5001/signin-oidc",
                 Parameters =
                 {
-                { "scope", "offline_access accounting.transactions openid profile email accounting.contacts accounting.settings"}
+                { "scope", "offline_access openid profile email payroll.employees.read"}
                 }
             });
             return accessToken;
@@ -64,7 +64,7 @@ namespace NJXManagement.HttpModel
         {
 
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get,
-                "https://api.xero.com/api.xro/2.0/" + endPoint);
+                "https://api.xero.com/payroll.xro/2.0/" + endPoint);
             request.Headers.Add("Authorization", "Bearer " + accessToken.AccessToken);
             request.Headers.Add("xero-tenant-id", bearerModel.TenantId);
 

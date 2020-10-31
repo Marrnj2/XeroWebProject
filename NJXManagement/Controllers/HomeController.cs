@@ -42,11 +42,11 @@ namespace NJXManagement.Controllers
             _accessToken = _client.SendRequestAsync(code).GetAwaiter().GetResult();
             _bearerModel = _client.BearerToken(_accessToken);
         }
-        [Route("GetData")]
-        public IActionResult TestData()
+        [Route("GetData/{endPoint}")]
+        public IActionResult TestData(string endPoint)
         {
 
-            var recall = _client.CallAPI(_accessToken, _bearerModel, "Accounts");
+            var recall = _client.CallAPI(_accessToken, _bearerModel, endPoint);
 
             return Content(recall);
 
