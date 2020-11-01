@@ -13,29 +13,39 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
+// column names for the data grid
 const columns = [
   { field: 'fname', headerName: 'First name', width: 130 },
   { field: 'lname', headerName: 'Last name', width: 130 },
-  { field: 'email', headerName: 'Email', width: 130 },
+  { field: 'email', headerName: 'Email', width: 250 },
   { field: 'phone', headerName: 'Phone Number', width: 160 },
+  { field: 'startDate', headerName: 'Start Date', width: 130 },
+  { field: 'endDate', headerName: 'End Date', width: 130 },
 ];
 
+// getting the relavent fields for each employee
 function makeEmployeeData(employee) {
   let employeeID = employee.employeeID;
   let firstName = employee.firstName;
   let lastName = employee.lastName;
   let phoneNumber = employee.phoneNumber;
   let email = employee.email;
+  // get only dates if they exist, else return '-'
+  let startDate = (employee.startDate) ? (employee.startDate.split('T')[0]) : ("-");
+  let endDate = (employee.endDate) ? (employee.endDate.split('T')[0]) : ("-");
 
-  let employeeObj = {id: employeeID, lname: lastName, fname: firstName, email: email, phone: phoneNumber}
+  //save employee data into new object and return it
+  let employeeObj = {id: employeeID, lname: lastName, fname: firstName, email: email, phone: phoneNumber, startDate: startDate, endDate: endDate}
   return employeeObj
 }
+
 
 export default function EmployeesTable() {
     const classes = useStyles();
 
     const [employeeData, setEmployeeData] = useState([]);
 
+    // on component load get api data
     useEffect(() => {
       getEmployeeData();
     }, []);
@@ -47,16 +57,14 @@ export default function EmployeesTable() {
       const jsonData = await response.json();
       let employees = jsonData["employees"];
 
-      console.log(employees);
-
+      // get necessary employee fields and save the new employee objects into an array
       let employeeRows = []
       for (const employee in employees) {
         employeeRows.push(makeEmployeeData(employees[employee]))
       }
+
       // sort by last name
       employeeRows.sort((a, b) => a.lname.localeCompare(b.lname));
-
-      console.log(employeeRows);
 
       // save into state
       setEmployeeData(employeeRows)
