@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect,useState } from 'react';
 import { DataGrid } from '@material-ui/data-grid';
 import Paper from "@material-ui/core/Paper";
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -14,34 +14,27 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 const columns = [
-  { field: 'firstName', headerName: 'First name', width: 130 },
-  { field: 'lastName', headerName: 'Last name', width: 130 },
-  { field: 'calendar', headerName: 'Calendar', width: 130 },
-  { field: 'nextPaymentDate', headerName: 'Next Payment Date', width: 160 },
+  { field: 'fname', headerName: 'First name', width: 130 },
+  { field: 'lname', headerName: 'Last name', width: 130 },
+  { field: 'email', headerName: 'Email', width: 130 },
+  { field: 'phone', headerName: 'Phone Number', width: 160 },
 ];
 
-const rows = [
-  { id: 1, lastName: 'Snow', firstName: 'Jon', calendar: 'Weekly', nextPaymentDate: '16 Jul 2019' },
-  { id: 2, lastName: 'Lannister', firstName: 'Cersei', calendar: 'Weekly', nextPaymentDate: '16 Jul 2019' },
-  { id: 3, lastName: 'Lannister', firstName: 'Jaime', calendar: 'Weekly', nextPaymentDate: '16 Jul 2019' },
-  { id: 4, lastName: 'Stark', firstName: 'Arya', calendar: 'Weekly', nextPaymentDate: '16 Jul 2019' },
-  { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', calendar: 'Weekly', nextPaymentDate: '16 Jul 2019' },
-  { id: 6, lastName: 'Melisandre', firstName: 'Jamie', calendar: 'Weekly', nextPaymentDate: '16 Jul 2019' },
-  { id: 7, lastName: 'Clifford', firstName: 'Ferrara', calendar: 'Weekly', nextPaymentDate: '16 Jul 2019' },
-  { id: 8, lastName: 'Frances', firstName: 'Rossini', calendar: 'Weekly', nextPaymentDate: '16 Jul 2019' },
-  { id: 9, lastName: 'Roxie', firstName: 'Harvey', calendar: 'Weekly', nextPaymentDate: '16 Jul 2019' },
-  { id: 10, lastName: 'Roxie', firstName: 'Harvey', calendar: 'Weekly', nextPaymentDate: '16 Jul 2019' },
-  { id: 11, lastName: 'Roxie', firstName: 'Harvey', calendar: 'Weekly', nextPaymentDate: '16 Jul 2019' },
-  { id: 12, lastName: 'Roxie', firstName: 'Harvey', calendar: 'Weekly', nextPaymentDate: '16 Jul 2019' },
-  { id: 13, lastName: 'Roxie', firstName: 'Harvey', calendar: 'Weekly', nextPaymentDate: '16 Jul 2019' },
-  { id: 14, lastName: 'Roxie', firstName: 'Harvey', calendar: 'Weekly', nextPaymentDate: '16 Jul 2019' },
-  { id: 15, lastName: 'Roxie', firstName: 'Harvey', calendar: 'Weekly', nextPaymentDate: '16 Jul 2019' },
-  { id: 16, lastName: 'Roxie', firstName: 'Harvey', calendar: 'Weekly', nextPaymentDate: '16 Jul 2019' },
-  { id: 17, lastName: 'Roxie', firstName: 'Harvey', calendar: 'Weekly', nextPaymentDate: '16 Jul 2019' },
-];
+function makeEmployeeData(employee) {
+  let employeeID = employee.employeeID;
+  let firstName = employee.firstName;
+  let lastName = employee.lastName;
+  let phoneNumber = employee.phoneNumber;
+  let email = employee.email;
+
+  let employeeObj = {id: employeeID, lname: lastName, fname: firstName, email: email, phone: phoneNumber}
+  return employeeObj
+}
 
 export default function EmployeesTable() {
     const classes = useStyles();
+
+    const [employeeData, setEmployeeData] = useState([]);
 
     useEffect(() => {
       getEmployeeData();
@@ -50,13 +43,23 @@ export default function EmployeesTable() {
     // get employee data from api
     const getEmployeeData = async () => {
       console.log("START API REQUEST")
-      const response = await fetch("GetData/employees ");
+      const response = await fetch("Payroll/employees ");
       const jsonData = await response.json();
-      //let employees = jsonData.Employees;
-      console.log(jsonData)
+      let employees = jsonData["employees"];
 
+      console.log(employees);
 
-      
+      let employeeRows = []
+      for (const employee in employees) {
+        employeeRows.push(makeEmployeeData(employees[employee]))
+      }
+      // sort by last name
+      employeeRows.sort((a, b) => a.lname.localeCompare(b.lname));
+
+      console.log(employeeRows);
+
+      // save into state
+      setEmployeeData(employeeRows)
     };
 
   return (
@@ -64,7 +67,7 @@ export default function EmployeesTable() {
     <h5>Employees</h5>
     <hr></hr>
     <div style={{ height: 650, width: '100%' }}>
-      <DataGrid rows={rows} columns={columns} pageSize={10} checkboxSelection />
+      <DataGrid rows={employeeData} columns={columns} pageSize={15} checkboxSelection />
     </div>
     <Button
         variant="contained"
