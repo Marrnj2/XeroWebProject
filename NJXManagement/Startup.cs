@@ -13,6 +13,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using NJXManagement.HttpModel;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using IdentityModel.Client;
 
 namespace NJXManagement
 {
@@ -47,8 +49,12 @@ namespace NJXManagement
 
 
             services.AddHttpClient();
+            services.TryAddSingleton<BearerModel>();
+            services.TryAddSingleton<TokenResponse>();
+            services.AddHttpClient<XeroRequest>();
+            
 
-            services.AddHttpClient<RequestToken>();
+
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {

@@ -19,6 +19,8 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.7" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+    <PackageReference Include="Xero.NetStandard.OAuth2" Version="3.7.2" />
+    <PackageReference Include="Xero.NetStandard.OAuth2Client" Version="1.2.2" />
   </ItemGroup>
 
   <ItemGroup>

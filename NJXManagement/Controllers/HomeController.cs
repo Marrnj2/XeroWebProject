@@ -12,14 +12,17 @@ using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using NJXManagement.HttpModel;
 using NJXManagement.Models;
+using Xero.NetStandard.OAuth2.Client;
+using Xero.NetStandard.OAuth2.Config;
 
 namespace NJXManagement.Controllers
 {
     public class HomeController : Controller
     {
-
-        private readonly RequestToken _client;
-        public  HomeController(RequestToken client)
+        static private TokenResponse _accessToken;
+        static private BearerModel _bearerModel;
+        private readonly XeroRequest _client;
+        public  HomeController(XeroRequest client)
         {
             _client = client;
         }
@@ -27,19 +30,38 @@ namespace NJXManagement.Controllers
         [HttpGet]
         public IActionResult Path()
         {
-            var url = "https://login.xero.com/identity/connect/authorize?response_type=code&client_id=F68F5B3DC51D422BA4A9CEBF499247CB&redirect_uri=https://localhost:5001/signin-oidc&scope=openid profile email accounting.transactions";
+            XeroConfiguration xconfig = new XeroConfiguration();
+
+            xconfig.ClientId = "F68F5B3DC51D422BA4A9CEBF499247CB";
+            xconfig.ClientSecret = "luTOFed4_aUl6c40c2ftH5fW_TL0ETybDfMq-faA1Z6Ht_j4";
+            xconfig.CallbackUri = new Uri("https://localhost:5001/signin-oidc");
+            xconfig.Scope = "openid profile email files accounting.transactions accounting.contacts payroll.employees offline_access";
+            var XRequest = new XeroClient(xconfig);
+
+            var url = XRequest.BuildLoginUri();
+
             return Redirect(url);
         }
         [Route("signin-oidc")]
-        public async Task<IActionResult> MethodAsync()
+        public void Method()
         {
             var url = UriHelper.GetEncodedUrl(HttpContext.Request);
             Uri u = new Uri(url);
             string code = HttpUtility.ParseQueryString(u.Query).Get("code");
 
-            var token =  await _client.SendRequestAsync(code);
-            var otherThing = await _client.BearerTokenAsync(token);
-            var recall = await _client.CallAPIAsync(token, otherThing);
+            _accessToken = _client.SendRequestAsync(code).GetAwaiter().GetResult();
+            _bearerModel = _client.BearerToken(_accessToken);
+        }
+        [Route("Payroll/{endPoint}")]
+        public IActionResult FetchPayroll(string endPoint)
+        {
+            var recall = _client.PayrollCall(_accessToken, _bearerModel, endPoint);
+            return Content(recall);
+        }
+        [Route("Xero/{endPoint}")]
+        public IActionResult FetchXero(string endPoint)
+        {
+            var recall = _client.AccountsCall(_accessToken, _bearerModel, endPoint);
             return Content(recall);
         }
     }

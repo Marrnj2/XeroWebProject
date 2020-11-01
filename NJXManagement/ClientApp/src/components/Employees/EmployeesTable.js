@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect } from 'react';
 import { DataGrid } from '@material-ui/data-grid';
 import Paper from "@material-ui/core/Paper";
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -42,6 +42,23 @@ const rows = [
 
 export default function EmployeesTable() {
     const classes = useStyles();
+
+    useEffect(() => {
+      getEmployeeData();
+    }, []);
+  
+    // get employee data from api
+    const getEmployeeData = async () => {
+      console.log("START API REQUEST")
+      const response = await fetch("GetData/employees ");
+      const jsonData = await response.json();
+      //let employees = jsonData.Employees;
+      console.log(jsonData)
+
+
+      
+    };
+
   return (
     <Paper variant="outlined" className="card-paper">
     <h5>Employees</h5>
