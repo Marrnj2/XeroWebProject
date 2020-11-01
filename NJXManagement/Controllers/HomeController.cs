@@ -35,9 +35,7 @@ namespace NJXManagement.Controllers
             xconfig.ClientId = "F68F5B3DC51D422BA4A9CEBF499247CB";
             xconfig.ClientSecret = "luTOFed4_aUl6c40c2ftH5fW_TL0ETybDfMq-faA1Z6Ht_j4";
             xconfig.CallbackUri = new Uri("https://localhost:5001/signin-oidc");
-
             xconfig.Scope = "openid profile email files accounting.transactions accounting.contacts payroll.employees offline_access";
-
             var XRequest = new XeroClient(xconfig);
 
             var url = XRequest.BuildLoginUri();
@@ -47,7 +45,6 @@ namespace NJXManagement.Controllers
         [Route("signin-oidc")]
         public void Method()
         {
-
             var url = UriHelper.GetEncodedUrl(HttpContext.Request);
             Uri u = new Uri(url);
             string code = HttpUtility.ParseQueryString(u.Query).Get("code");
@@ -58,19 +55,14 @@ namespace NJXManagement.Controllers
         [Route("Payroll/{endPoint}")]
         public IActionResult FetchPayroll(string endPoint)
         {
-
             var recall = _client.PayrollCall(_accessToken, _bearerModel, endPoint);
-
             return Content(recall);
-
         }
         [Route("Xero/{endPoint}")]
         public IActionResult FetchXero(string endPoint)
         {
-
             var recall = _client.AccountsCall(_accessToken, _bearerModel, endPoint);
             return Content(recall);
-
         }
     }
 }

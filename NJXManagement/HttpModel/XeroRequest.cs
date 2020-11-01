@@ -38,7 +38,7 @@ namespace NJXManagement.HttpModel
                 ClientSecret = "luTOFed4_aUl6c40c2ftH5fW_TL0ETybDfMq-faA1Z6Ht_j4",
                 RedirectUri = "https://localhost:5001/signin-oidc",
                 Parameters ={
-                { "scope", "openid profile email accounting.transactions accounting.contacts accounting.settingsoffline_access "}
+                { "scope", "openid profile email accounting.transactions accounting.contacts accounting.settingsoffline_access"}
                 }
             });
             return accessToken;
