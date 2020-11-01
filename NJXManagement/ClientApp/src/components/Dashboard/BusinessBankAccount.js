@@ -1,15 +1,11 @@
-import React, { PureComponent } from "react";
+import React from "react";
 import {
   AreaChart,
   Area,
   XAxis,
-  YAxis,
-  CartesianGrid,
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import Card from "@material-ui/core/Card";
-import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 
 const data = [

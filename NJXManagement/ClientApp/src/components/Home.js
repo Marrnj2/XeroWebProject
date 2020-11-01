@@ -6,7 +6,6 @@ import BusinessSavingsAccount from "./Dashboard/BusinessSavingsAccount";
 import TotalCashInAndOut from "./Dashboard/TotalCashInAndOut";
 import AccountWatchlist from "./Dashboard/AccountWatchlist";
 import Bills from "./Dashboard/Bills";
-import { withStyles } from '@material-ui/styles';
 
 export class Home extends Component {
   static displayName = Home.name;
