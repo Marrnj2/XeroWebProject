@@ -53,7 +53,7 @@ export default function AddEmployeeDialog() {
     var employee = {
         firstName: fname,
         lastName: lname,
-        dateOfBirth: dob,
+        dateOfBirth: dob + "T00:00:00",
         email: email,
         phoneNumber: phone,
         address: {
