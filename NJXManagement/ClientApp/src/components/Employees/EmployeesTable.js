@@ -9,6 +9,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Button from '@material-ui/core/Button';
 import EditIcon from '@material-ui/icons/Edit';
+import IconButton from '@material-ui/core/IconButton';
 
 const useStyles = makeStyles((theme) => ({
     button: {
@@ -89,7 +90,11 @@ export default function EmployeesTable() {
         <TableBody>
           {employeeData.map((employee) => (
             <TableRow key={employee.id}>
-              <TableCell component="th" scope="row"><Button disableElevation><EditIcon className={classes.edtIcon}/></Button></TableCell>
+              <TableCell component="th" scope="row" padding="none">
+                <IconButton color="primary" aria-label="edit employee" component="span">
+                  <EditIcon className={classes.edtIcon}/>
+                </IconButton>
+              </TableCell>
               <TableCell>{employee.fname}</TableCell>
               <TableCell>{employee.lname}</TableCell>
               <TableCell>{employee.email}</TableCell>
