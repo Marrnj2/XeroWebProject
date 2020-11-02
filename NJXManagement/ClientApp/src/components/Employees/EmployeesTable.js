@@ -86,7 +86,7 @@ export default function EmployeesTable() {
           {employeeData.map((employee) => (
             <TableRow key={employee.id}>
               <TableCell component="th" scope="row" padding="none">
-                <UpdateEmployeeDialog/>
+                <UpdateEmployeeDialog employee={employee}/>
               </TableCell>
               <TableCell>{employee.fname}</TableCell>
               <TableCell>{employee.lname}</TableCell>

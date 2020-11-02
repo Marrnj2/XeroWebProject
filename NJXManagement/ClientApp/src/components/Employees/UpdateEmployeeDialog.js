@@ -16,20 +16,16 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default function UpdateEmployeeDialog() {
+export default function UpdateEmployeeDialog(props) {
   const classes = useStyles();
 
   const [open, setOpen] = React.useState(false);
 
-  const [fname, setFName] = useState("");
-  const [lname, setLName] = useState("");
-  const [dob, setDOB] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [address1, setAddress1] = useState("");
-  const [address2, setAddress2] = useState("");
-  const [city, setCity] = useState("");
-  const [postcode, setPostCode] = useState("");
+  console.log(props.employee)
+  const [fname, setFName] = useState(props.employee.fname);
+  const [lname, setLName] = useState(props.employee.lname);
+  const [email, setEmail] = useState(props.employee.email);
+  const [phone, setPhone] = useState(props.employee.phone);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -103,17 +99,6 @@ export default function UpdateEmployeeDialog() {
               onChange={e => setLName(e.target.value)}
             />
             <TextField
-              required
-              margin="dense"
-              id="dob"
-              label="Date of Birth"
-              type="date"
-              fullWidth
-              variant="outlined"
-              value={dob}
-              onChange={e => setDOB(e.target.value)}
-            />
-            <TextField
               margin="dense"
               id="fname"
               label="Phone Number"
@@ -132,51 +117,6 @@ export default function UpdateEmployeeDialog() {
               variant="outlined"
               value={email}
               onChange={e => setEmail(e.target.value)}
-            />
-
-            <h5 className={classes.formGroupTitle}>Address</h5>
-            <hr></hr>
-            <TextField
-              required
-              margin="dense"
-              id="addressLine1"
-              label="Address Line 1"
-              type="text"
-              fullWidth
-              variant="outlined"
-              value={address1}
-              onChange={e => setAddress1(e.target.value)}
-            />
-
-            <TextField
-              margin="dense"
-              id="addressLine2"
-              label="Address Line 2"
-              type="text"
-              fullWidth
-              variant="outlined"
-              value={address2}
-              onChange={e => setAddress2(e.target.value)}
-            />
-            <TextField
-              required
-              margin="dense"
-              id="city"
-              label="City"
-              type="text"
-              variant="outlined"
-              value={city}
-              onChange={e => setCity(e.target.value)}
-            />
-            <TextField
-              required
-              margin="dense"
-              id="postCode"
-              label="PostCode"
-              type="text"
-              variant="outlined"
-              value={postcode}
-              onChange={e => setPostCode(e.target.value)}
             />
           </DialogContent>
           <DialogActions>
