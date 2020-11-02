@@ -64,6 +64,23 @@ export default function AddEmployeeDialog() {
         }
     }
     console.log(employee)
+
+    // send to back end
+    fetch('Employee/Add/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(employee),
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Success:', data);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+
     handleClose()
 }
 

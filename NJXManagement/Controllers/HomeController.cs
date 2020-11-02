@@ -65,11 +65,11 @@ namespace NJXManagement.Controllers
             var recall = _client.AccountsCall(_accessToken, _bearerModel, endPoint);
             return Content(recall);
         }
-        [Route("Employee/Add/{employee}")]
-        public HttpStatusCode AddEmployee(StringContent employee)
+        [Route("Employee/Add/")]
+        public HttpStatusCode AddEmployee()
         {
-            var recall = _client.AddEmployee(_accessToken, _bearerModel, employee);
-            return recall;
+            //var recall = _client.AddEmployee(_accessToken, _bearerModel, employee);
+            return HttpStatusCode.Accepted;
         }
     }
 }
