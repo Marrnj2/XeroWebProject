@@ -2,14 +2,12 @@ import React, { useEffect,useState } from 'react';
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from '@material-ui/core/styles';
 import AddEmployeeDialog from './AddEmployeeDialog'
+import UpdateEmployeeDialog from './UpdateEmployeeDialog'
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Button from '@material-ui/core/Button';
-import EditIcon from '@material-ui/icons/Edit';
-import IconButton from '@material-ui/core/IconButton';
 
 const useStyles = makeStyles((theme) => ({
     button: {
@@ -20,9 +18,6 @@ const useStyles = makeStyles((theme) => ({
       paddingBottom: 0,
       marginBottom: 0,
     },
-    edtIcon: {
-      color: "silver",
-    }
   }));
 
 // getting the relavent fields for each employee
@@ -91,9 +86,7 @@ export default function EmployeesTable() {
           {employeeData.map((employee) => (
             <TableRow key={employee.id}>
               <TableCell component="th" scope="row" padding="none">
-                <IconButton color="primary" aria-label="edit employee" component="span">
-                  <EditIcon className={classes.edtIcon}/>
-                </IconButton>
+                <UpdateEmployeeDialog/>
               </TableCell>
               <TableCell>{employee.fname}</TableCell>
               <TableCell>{employee.lname}</TableCell>
