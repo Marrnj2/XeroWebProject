@@ -80,7 +80,7 @@ namespace NJXManagement.HttpModel
         {
 
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get,
-                    " 	https://api.xero.com/api.xro/2.0/" + endPoint);
+                    "https://api.xero.com/api.xro/2.0/" + endPoint);
             request.Headers.Add("Authorization", "Bearer " + accessToken.AccessToken);
             request.Headers.Add("xero-tenant-id", bearerModel.TenantId);
 
@@ -89,6 +89,35 @@ namespace NJXManagement.HttpModel
             var responseStream = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
 
             return responseStream;
+        }
+        public System.Net.HttpStatusCode AddEmployee(TokenResponse accessToken, BearerModel bearerModel, StringContent employee)
+        {
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post,
+            "https://api.xero.com/api.xro/2.0/employees");
+            request.Headers.Add("Authorization", "Bearer " + accessToken.AccessToken);
+            request.Headers.Add("xero-tenant-id", bearerModel.TenantId);
+
+            //var newEmployee = new StringContent(
+            //    System.Text.Json.JsonSerializer.Serialize(employee),
+            //    Encoding.UTF8,
+            //    "application/json");
+
+            request.Content = employee;
+            var response = Client.SendAsync(request).GetAwaiter().GetResult();
+            return response.StatusCode;
+        }
+        public System.Net.HttpStatusCode EditEmployee(TokenResponse accessToken, BearerModel bearerModel)
+        {
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Delete,
+            "https://api.xero.com/api.xro/2.0/employees");
+            request.Headers.Add("Authorization", "Bearer " + accessToken.AccessToken);
+            request.Headers.Add("xero-tenant-id", bearerModel.TenantId);
+
+
+
+            var response = Client.SendAsync(request).GetAwaiter().GetResult();
+
+            return response.StatusCode;
         }
     }
 }

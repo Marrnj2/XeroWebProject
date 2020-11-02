@@ -2,14 +2,18 @@ import React, { useEffect,useState } from 'react';
 import { DataGrid } from '@material-ui/data-grid';
 import Paper from "@material-ui/core/Paper";
 import DeleteIcon from '@material-ui/icons/Delete';
-import AddIcon from '@material-ui/icons/Add';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-
+import AddEmployeeDialog from './AddEmployeeDialog'
 
 const useStyles = makeStyles((theme) => ({
     button: {
       margin: theme.spacing(1),
+    },
+    formGroupTitle: {
+      marginTop: theme.spacing(4),
+      paddingBottom: 0,
+      marginBottom: 0,
     },
   }));
 
@@ -38,7 +42,6 @@ function makeEmployeeData(employee) {
   let employeeObj = {id: employeeID, lname: lastName, fname: firstName, email: email, phone: phoneNumber, startDate: startDate, endDate: endDate}
   return employeeObj
 }
-
 
 export default function EmployeesTable() {
     const classes = useStyles();
@@ -85,14 +88,8 @@ export default function EmployeesTable() {
       >
         Delete
       </Button>
-      <Button
-        variant="contained"
-        color="primary"
-        className={classes.button}
-        startIcon={<AddIcon />}
-      >
-        Add Employee
-      </Button>
+      <AddEmployeeDialog/>
+
     </Paper>
   );
 }
