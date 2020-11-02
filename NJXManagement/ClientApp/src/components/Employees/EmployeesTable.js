@@ -7,6 +7,8 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import Button from '@material-ui/core/Button';
+import EditIcon from '@material-ui/icons/Edit';
 
 const useStyles = makeStyles((theme) => ({
     button: {
@@ -17,6 +19,9 @@ const useStyles = makeStyles((theme) => ({
       paddingBottom: 0,
       marginBottom: 0,
     },
+    edtIcon: {
+      color: "silver",
+    }
   }));
 
 // getting the relavent fields for each employee
@@ -72,23 +77,25 @@ export default function EmployeesTable() {
     <Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow>
+          <TableCell></TableCell>
             <TableCell>First Name</TableCell>
-            <TableCell align="left">Last Name</TableCell>
-            <TableCell align="left">Email</TableCell>
-            <TableCell align="left">Phone Number</TableCell>
-            <TableCell align="left">Start Date</TableCell>
-            <TableCell align="left">End Date</TableCell>
+            <TableCell>Last Name</TableCell>
+            <TableCell>Email</TableCell>
+            <TableCell>Phone Number</TableCell>
+            <TableCell>Start Date</TableCell>
+            <TableCell>End Date</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {employeeData.map((employee) => (
             <TableRow key={employee.id}>
-              <TableCell component="th" scope="row">{employee.fname}</TableCell>
-              <TableCell align="left">{employee.lname}</TableCell>
-              <TableCell align="left">{employee.email}</TableCell>
-              <TableCell align="left">{employee.phone}</TableCell>
-              <TableCell align="left">{employee.startDate}</TableCell>
-              <TableCell align="left">{employee.endDate}</TableCell>
+              <TableCell component="th" scope="row"><Button disableElevation><EditIcon className={classes.edtIcon}/></Button></TableCell>
+              <TableCell>{employee.fname}</TableCell>
+              <TableCell>{employee.lname}</TableCell>
+              <TableCell>{employee.email}</TableCell>
+              <TableCell>{employee.phone}</TableCell>
+              <TableCell>{employee.startDate}</TableCell>
+              <TableCell>{employee.endDate}</TableCell>
             </TableRow>
           ))}
         </TableBody>
