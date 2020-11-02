@@ -9,22 +9,20 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import { makeStyles } from "@material-ui/core/styles";
 import EditIcon from '@material-ui/icons/Edit';
 import IconButton from '@material-ui/core/IconButton';
-
 const useStyles = makeStyles(theme => ({
     edtIcon: {
         color: "silver",
     }
 }));
 
+export default function UpdateEmployeeDialog() {
 export default function UpdateEmployeeDialog(props) {
   const classes = useStyles();
 
   const [open, setOpen] = React.useState(false);
 
-  console.log(props.employee)
-  const [eID] = useState(props.employee.id);
-  const [fname, setFName] = useState(props.employee.fname);
-  const [lname, setLName] = useState(props.employee.lname);
+  const [fname, setFName] = useState("");
+  const [lname, setLName] = useState("");
   const [dob, setDOB] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -32,19 +30,21 @@ export default function UpdateEmployeeDialog(props) {
   const [address2, setAddress2] = useState("");
   const [city, setCity] = useState("");
   const [postcode, setPostCode] = useState("");
-
+  console.log(props.employee)
+  const [fname, setFName] = useState(props.employee.fname);
+  const [lname, setLName] = useState(props.employee.lname);
+  const [email, setEmail] = useState(props.employee.email);
+  const [phone, setPhone] = useState(props.employee.phone);
 
   const handleClickOpen = () => {
     setOpen(true);
   };
-
   const handleClose = () => {
     setOpen(false);
   };
-
   const handleSubmit = evt => {
     evt.preventDefault();
-    
+    /*
     var employee = {
       firstName: fname,
       lastName: lname,
@@ -58,32 +58,15 @@ export default function UpdateEmployeeDialog(props) {
         postCode: postcode
       }
     };
-    
-    console.log("Edit");
-    fetch(`Employee/Edit/${eID}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(employee),
-    })
-    .then(response => response.json())
-    .then(data => {
-      console.log('Success:', data);
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
-
+    */
+    console.log("submit");
     handleClose();
   };
-
   return (
     <>
       <IconButton color="primary" aria-label="edit employee" component="span" onClick={handleClickOpen}>
         <EditIcon className={classes.edtIcon} />
       </IconButton>
-
       <Dialog
         open={open}
         onClose={handleClose}
@@ -95,7 +78,6 @@ export default function UpdateEmployeeDialog(props) {
             <DialogContentText>
               Please update the employees detials.
             </DialogContentText>
-
             <h5 className={classes.formGroupTitle}>General Information</h5>
             <hr></hr>
             <TextField
