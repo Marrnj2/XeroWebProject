@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
@@ -63,6 +64,12 @@ namespace NJXManagement.Controllers
         {
             var recall = _client.AccountsCall(_accessToken, _bearerModel, endPoint);
             return Content(recall);
+        }
+        [Route("Employee/Add/{employee}")]
+        public HttpStatusCode AddEmployee(StringContent employee)
+        {
+            var recall = _client.AddEmployee(_accessToken, _bearerModel, employee);
+            return recall;
         }
     }
 }
