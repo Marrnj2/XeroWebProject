@@ -32,8 +32,6 @@ export default function AddEmployeeDialog() {
   const [dob, setDOB] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [endDate, setStartDate] = useState("");
-  const [startDate, setEndDate] = useState("");
   const [address1, setAddress1] = useState("");
   const [address2, setAddress2] = useState("");
   const [city, setCity] = useState("");
