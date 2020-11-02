@@ -163,27 +163,6 @@ export default function AddEmployeeDialog() {
               onChange={e => setEmail(e.target.value)}
             />
 
-            <TextField
-              margin="dense"
-              id="startDate"
-              label="Start Date"
-              type="date"
-              fullWidth
-              variant="outlined"
-              value={startDate}
-              onChange={e => setStartDate(e.target.value)}
-            />
-            <TextField
-              margin="dense"
-              id="endDate"
-              label="End Date"
-              type="date"
-              fullWidth
-              variant="outlined"
-              value={endDate}
-              onChange={e => setEndDate(e.target.value)}
-            />
-
             <h5 className={classes.formGroupTitle}>Address</h5>
             <hr></hr>
             <TextField
