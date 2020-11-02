@@ -19,16 +19,6 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-// column names for the data grid
-const columns = [
-  { field: 'fname', headerName: 'First name', width: 130 },
-  { field: 'lname', headerName: 'Last name', width: 130 },
-  { field: 'email', headerName: 'Email', width: 250 },
-  { field: 'phone', headerName: 'Phone Number', width: 160 },
-  { field: 'startDate', headerName: 'Start Date', width: 130 },
-  { field: 'endDate', headerName: 'End Date', width: 130 },
-];
-
 // getting the relavent fields for each employee
 function makeEmployeeData(employee) {
   let employeeID = employee.employeeID;
