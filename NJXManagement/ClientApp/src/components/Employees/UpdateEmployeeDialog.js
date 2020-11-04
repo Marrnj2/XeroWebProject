@@ -24,8 +24,6 @@ export default function UpdateEmployeeDialog(props) {
   console.log(props.employee)
   const [fname, setFName] = useState(props.employee.fname);
   const [lname, setLName] = useState(props.employee.lname);
-  const [email, setEmail] = useState(props.employee.email);
-  const [phone, setPhone] = useState(props.employee.phone);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -97,26 +95,6 @@ export default function UpdateEmployeeDialog(props) {
               variant="outlined"
               value={lname}
               onChange={e => setLName(e.target.value)}
-            />
-            <TextField
-              margin="dense"
-              id="fname"
-              label="Phone Number"
-              type="text"
-              fullWidth
-              variant="outlined"
-              value={phone}
-              onChange={e => setPhone(e.target.value)}
-            />
-            <TextField
-              margin="dense"
-              id="email"
-              label="Email Address"
-              type="text"
-              fullWidth
-              variant="outlined"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
             />
           </DialogContent>
           <DialogActions>
