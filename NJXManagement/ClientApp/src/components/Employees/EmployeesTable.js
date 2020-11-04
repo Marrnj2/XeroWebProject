@@ -1,10 +1,13 @@
 import React, { useEffect,useState } from 'react';
-import { DataGrid } from '@material-ui/data-grid';
 import Paper from "@material-ui/core/Paper";
-import DeleteIcon from '@material-ui/icons/Delete';
 import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
 import AddEmployeeDialog from './AddEmployeeDialog'
+import UpdateEmployeeDialog from './UpdateEmployeeDialog'
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 
 const useStyles = makeStyles((theme) => ({
     button: {
@@ -16,16 +19,6 @@ const useStyles = makeStyles((theme) => ({
       marginBottom: 0,
     },
   }));
-
-// column names for the data grid
-const columns = [
-  { field: 'fname', headerName: 'First name', width: 130 },
-  { field: 'lname', headerName: 'Last name', width: 130 },
-  { field: 'email', headerName: 'Email', width: 250 },
-  { field: 'phone', headerName: 'Phone Number', width: 160 },
-  { field: 'startDate', headerName: 'Start Date', width: 130 },
-  { field: 'endDate', headerName: 'End Date', width: 130 },
-];
 
 // getting the relavent fields for each employee
 function makeEmployeeData(employee) {
@@ -77,17 +70,34 @@ export default function EmployeesTable() {
     <Paper variant="outlined" className="card-paper">
     <h5>Employees</h5>
     <hr></hr>
-    <div style={{ height: 650, width: '100%' }}>
-      <DataGrid rows={employeeData} columns={columns} pageSize={15} checkboxSelection />
-    </div>
-    <Button
-        variant="contained"
-        color="secondary"
-        className={classes.button}
-        startIcon={<DeleteIcon />}
-      >
-        Delete
-      </Button>
+    <Table className={classes.table} aria-label="simple table">
+        <TableHead>
+          <TableRow>
+          <TableCell></TableCell>
+            <TableCell>First Name</TableCell>
+            <TableCell>Last Name</TableCell>
+            <TableCell>Email</TableCell>
+            <TableCell>Phone Number</TableCell>
+            <TableCell>Start Date</TableCell>
+            <TableCell>End Date</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {employeeData.map((employee) => (
+            <TableRow key={employee.id}>
+              <TableCell component="th" scope="row" padding="none">
+                <UpdateEmployeeDialog employee={employee}/>
+              </TableCell>
+              <TableCell>{employee.fname}</TableCell>
+              <TableCell>{employee.lname}</TableCell>
+              <TableCell>{employee.email}</TableCell>
+              <TableCell>{employee.phone}</TableCell>
+              <TableCell>{employee.startDate}</TableCell>
+              <TableCell>{employee.endDate}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
       <AddEmployeeDialog/>
 
     </Paper>
