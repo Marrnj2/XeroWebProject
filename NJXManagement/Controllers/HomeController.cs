@@ -1,37 +1,75 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
+using System.Web;
+using IdentityModel.Client;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+using NJXManagement.HttpModel;
 using NJXManagement.Models;
+using Xero.NetStandard.OAuth2.Client;
+using Xero.NetStandard.OAuth2.Config;
 
 namespace NJXManagement.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        static private TokenResponse _accessToken;
+        static private BearerModel _bearerModel;
+        private readonly XeroRequest _client;
+        public  HomeController(XeroRequest client)
         {
-            _logger = logger;
+            _client = client;
         }
-
-        public IActionResult Index()
+        [Route("Path")]
+        [HttpGet]
+        public IActionResult Path()
         {
-            return View();
+            XeroConfiguration xconfig = new XeroConfiguration();
+
+            xconfig.ClientId = "F68F5B3DC51D422BA4A9CEBF499247CB";
+            xconfig.ClientSecret = "luTOFed4_aUl6c40c2ftH5fW_TL0ETybDfMq-faA1Z6Ht_j4";
+            xconfig.CallbackUri = new Uri("https://localhost:5001/signin-oidc");
+            xconfig.Scope = "openid profile email files accounting.transactions accounting.contacts payroll.employees offline_access";
+            var XRequest = new XeroClient(xconfig);
+
+            var url = XRequest.BuildLoginUri();
+
+            return Redirect(url);
         }
-
-        public IActionResult Privacy()
+        [Route("signin-oidc")]
+        public void Method()
         {
-            return View();
+            var url = UriHelper.GetEncodedUrl(HttpContext.Request);
+            Uri u = new Uri(url);
+            string code = HttpUtility.ParseQueryString(u.Query).Get("code");
+
+            _accessToken = _client.SendRequestAsync(code).GetAwaiter().GetResult();
+            _bearerModel = _client.BearerToken(_accessToken);
         }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        [Route("Payroll/{endPoint}")]
+        public IActionResult FetchPayroll(string endPoint)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            var recall = _client.PayrollCall(_accessToken, _bearerModel, endPoint);
+            return Content(recall);
+        }
+        [Route("Xero/{endPoint}")]
+        public IActionResult FetchXero(string endPoint)
+        {
+            var recall = _client.AccountsCall(_accessToken, _bearerModel, endPoint);
+            return Content(recall);
+        }
+        [Route("Employee/Add/")]
+        public HttpStatusCode AddEmployee()
+        {
+            //var recall = _client.AddEmployee(_accessToken, _bearerModel, employee);
+            return HttpStatusCode.Accepted;
         }
     }
 }
