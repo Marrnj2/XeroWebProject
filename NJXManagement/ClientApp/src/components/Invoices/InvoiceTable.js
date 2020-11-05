@@ -43,7 +43,7 @@ export default function InvoiceTable() {
     <Paper variant="outlined" className="card-paper">
     <h5>Invoices</h5>
     <hr></hr>
-    <Table className={classes.table} aria-label="simple table">
+    <Table className={classes.table}  size="small" aria-label="simple table">
         <TableHead>
           <TableRow>
             <TableCell>Status</TableCell>
