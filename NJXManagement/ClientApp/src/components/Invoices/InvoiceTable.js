@@ -65,9 +65,9 @@ export default function InvoiceTable() {
                 <TableCell>{invoice["DateString"]}</TableCell>
                 <TableCell>{invoice["DueDateString"]}</TableCell>
                 <TableCell>{invoice.Contact["Name"]}</TableCell>
-                <TableCell>{invoice["AmountDue"]}</TableCell>
-                <TableCell>{invoice["AmountPaid"]}</TableCell>
-                <TableCell>{invoice["Total"]}</TableCell>
+                <TableCell>{Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'}).format(invoice["AmountDue"])}</TableCell>
+                <TableCell>{Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'}).format(invoice["AmountPaid"])}</TableCell>
+                <TableCell>{Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'}).format(invoice["Total"])}</TableCell>
             </TableRow>
           ))}
         </TableBody>
