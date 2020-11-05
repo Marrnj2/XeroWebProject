@@ -35,6 +35,9 @@ export default function InvoiceTable() {
       const jsonData = await response.json();
       console.log(jsonData.Invoices);
 
+      // sort invoices on due date
+      jsonData.Invoices.sort((a, b) => b.DueDateString.localeCompare(a.DueDateString));
+
       // save into state
       setInvoicesData(jsonData.Invoices)
     };
