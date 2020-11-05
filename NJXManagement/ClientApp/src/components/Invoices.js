@@ -1,8 +1,12 @@
-import React from 'react';
+import React from "react";
 import InvoicesTable from "./Invoices/InvoiceTable";
+import InvoicesGraph from "./Invoices/InvoiceGraph";
 
 export default function Employees() {
-    return (
-      <InvoicesTable/>
-    );
+  return (
+    <>
+      <InvoicesGraph />
+      <InvoicesTable />
+    </>
+  );
 }
