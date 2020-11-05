@@ -64,7 +64,7 @@ export default function InvoiceTable() {
                 <TableCell>Status</TableCell>
                 <TableCell>{invoice["DateString"]}</TableCell>
                 <TableCell>{invoice["DueDateString"]}</TableCell>
-                <TableCell>{invoice["ContactID"]}</TableCell>
+                <TableCell>{invoice.Contact["Name"]}</TableCell>
                 <TableCell>{invoice["AmountDue"]}</TableCell>
                 <TableCell>{invoice["AmountPaid"]}</TableCell>
                 <TableCell>{invoice["Total"]}</TableCell>
