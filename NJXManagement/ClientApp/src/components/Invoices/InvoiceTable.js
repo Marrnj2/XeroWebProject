@@ -6,6 +6,7 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import Moment from  'moment';
 
 const useStyles = makeStyles((theme) => ({
     button: {
@@ -62,8 +63,8 @@ export default function InvoiceTable() {
           {invoicesData.map((invoice) => (
             <TableRow key={invoice.InvoiceID}>
                 <TableCell>Status</TableCell>
-                <TableCell>{invoice["DateString"]}</TableCell>
-                <TableCell>{invoice["DueDateString"]}</TableCell>
+                <TableCell>{Moment(invoice["DateString"].split('T')[0]).format('DD-MM-YYYY')}</TableCell>
+                <TableCell>{Moment(invoice["DueDateString"].split('T')[0]).format('DD-MM-YYYY')}</TableCell>
                 <TableCell>{invoice.Contact["Name"]}</TableCell>
                 <TableCell>{Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'}).format(invoice["AmountDue"])}</TableCell>
                 <TableCell>{Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'}).format(invoice["AmountPaid"])}</TableCell>
