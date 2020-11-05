@@ -114,20 +114,25 @@ export default function InvoiceTable() {
   };
 
   function getInvoiceTotals(invoices) {
-    var holder = {};
+    var temp = {};
 
-    invoices.forEach(function(d) {
-      if (holder.hasOwnProperty(d.Contact["Name"])) {
-        holder[d.Contact["Name"]] = holder[d.Contact["Name"]] + d["AmountDue"];
+    invoices.forEach(function(i) {
+        let monthYear = i["DueDateString"].split('T')[0]
+        monthYear = monthYear.slice(0, -3)
+
+      if (temp.hasOwnProperty(monthYear)) {
+          // add name and amount
+          temp[monthYear] = temp[monthYear] + i["AmountDue"];
       } else {
-        holder[d.Contact["Name"]] = d["AmountDue"];
+          // set new key and assign value
+          temp[monthYear] = i["AmountDue"];
       }
     });
     
     var obj2 = [];
     
-    for (var prop in holder) {
-      obj2.push({ name: prop, value: holder[prop] });
+    for (var prop in temp) {
+      obj2.push({ name: prop, value: temp[prop] });
     }
     
     console.log(obj2);
