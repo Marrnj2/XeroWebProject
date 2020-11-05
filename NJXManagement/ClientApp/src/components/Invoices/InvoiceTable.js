@@ -53,9 +53,9 @@ export default function InvoiceTable() {
             <TableCell>Issue Date</TableCell>
             <TableCell>Due Date</TableCell>
             <TableCell>Client</TableCell>
-            <TableCell>Total</TableCell>
             <TableCell>Amount Due</TableCell>
             <TableCell>Amount Paid</TableCell>
+            <TableCell>Total</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -65,9 +65,9 @@ export default function InvoiceTable() {
                 <TableCell>{invoice["DateString"]}</TableCell>
                 <TableCell>{invoice["DueDateString"]}</TableCell>
                 <TableCell>{invoice["ContactID"]}</TableCell>
-                <TableCell>{invoice["Total"]}</TableCell>
                 <TableCell>{invoice["AmountDue"]}</TableCell>
                 <TableCell>{invoice["AmountPaid"]}</TableCell>
+                <TableCell>{invoice["Total"]}</TableCell>
             </TableRow>
           ))}
         </TableBody>
