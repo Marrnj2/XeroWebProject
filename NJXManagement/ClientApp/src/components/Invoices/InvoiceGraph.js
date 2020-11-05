@@ -107,9 +107,34 @@ export default function InvoiceTable() {
       b.DueDateString.localeCompare(a.DueDateString)
     );
 
+    let totals = getInvoiceTotals(jsonData.Invoices);
+
     // save into state
-    setInvoicesData(jsonData.Invoices);
+    setInvoicesData(totals);
   };
+
+  function getInvoiceTotals(invoices) {
+    var holder = {};
+
+    invoices.forEach(function(d) {
+      if (holder.hasOwnProperty(d.Contact["Name"])) {
+        holder[d.Contact["Name"]] = holder[d.Contact["Name"]] + d["AmountDue"];
+      } else {
+        holder[d.Contact["Name"]] = d["AmountDue"];
+      }
+    });
+    
+    var obj2 = [];
+    
+    for (var prop in holder) {
+      obj2.push({ name: prop, value: holder[prop] });
+    }
+    
+    console.log(obj2);
+
+
+      return invoices;
+  }
 
   return (
     <Paper variant="outlined" className="card-paper">
