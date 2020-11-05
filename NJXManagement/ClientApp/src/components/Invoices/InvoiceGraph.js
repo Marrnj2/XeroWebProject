@@ -118,7 +118,7 @@ export default function InvoiceTable() {
       <div style={{ width: "100%", height: 350 }}>
         <ResponsiveContainer>
           <BarChart
-            data={data}
+            data={invoicesData}
             margin={{
               top: 20,
               right: 30,
@@ -131,8 +131,8 @@ export default function InvoiceTable() {
             <YAxis />
             <Tooltip />
             <Legend />
-            <Bar dataKey="pv" stackId="a" fill="#8884d8" />
-            <Bar dataKey="uv" stackId="a" fill="#82ca9d" />
+            <Bar dataKey="AmountPaid" stackId="a" fill="#68A3DE" />
+            <Bar dataKey="AmountDue" stackId="a" fill="lightGrey" />
           </BarChart>
         </ResponsiveContainer>
       </div>
