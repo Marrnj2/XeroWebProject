@@ -24,6 +24,14 @@ export default function UpdateEmployeeDialog(props) {
   console.log(props.employee)
   const [fname, setFName] = useState(props.employee.fname);
   const [lname, setLName] = useState(props.employee.lname);
+  const [dob, setDOB] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [address1, setAddress1] = useState("");
+  const [address2, setAddress2] = useState("");
+  const [city, setCity] = useState("");
+  const [postcode, setPostCode] = useState("");
+
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -35,7 +43,7 @@ export default function UpdateEmployeeDialog(props) {
 
   const handleSubmit = evt => {
     evt.preventDefault();
-    /*
+    
     var employee = {
       firstName: fname,
       lastName: lname,
@@ -49,7 +57,7 @@ export default function UpdateEmployeeDialog(props) {
         postCode: postcode
       }
     };
-    */
+    
     console.log("submit");
 
     handleClose();
@@ -95,6 +103,82 @@ export default function UpdateEmployeeDialog(props) {
               variant="outlined"
               value={lname}
               onChange={e => setLName(e.target.value)}
+            />
+            <TextField
+              required
+              margin="dense"
+              id="dob"
+              label="Date of Birth"
+              type="date"
+              fullWidth
+              variant="outlined"
+              value={dob}
+              onChange={e => setDOB(e.target.value)}
+            />
+            <TextField
+              margin="dense"
+              id="fname"
+              label="Phone Number"
+              type="text"
+              fullWidth
+              variant="outlined"
+              value={phone}
+              onChange={e => setPhone(e.target.value)}
+            />
+            <TextField
+              margin="dense"
+              id="email"
+              label="Email Address"
+              type="text"
+              fullWidth
+              variant="outlined"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+            />
+
+            <h5 className={classes.formGroupTitle}>Address</h5>
+            <hr></hr>
+            <TextField
+              required
+              margin="dense"
+              id="addressLine1"
+              label="Address Line 1"
+              type="text"
+              fullWidth
+              variant="outlined"
+              value={address1}
+              onChange={e => setAddress1(e.target.value)}
+            />
+
+            <TextField
+              margin="dense"
+              id="addressLine2"
+              label="Address Line 2"
+              type="text"
+              fullWidth
+              variant="outlined"
+              value={address2}
+              onChange={e => setAddress2(e.target.value)}
+            />
+            <TextField
+              required
+              margin="dense"
+              id="city"
+              label="City"
+              type="text"
+              variant="outlined"
+              value={city}
+              onChange={e => setCity(e.target.value)}
+            />
+            <TextField
+              required
+              margin="dense"
+              id="postCode"
+              label="PostCode"
+              type="text"
+              variant="outlined"
+              value={postcode}
+              onChange={e => setPostCode(e.target.value)}
             />
           </DialogContent>
           <DialogActions>
