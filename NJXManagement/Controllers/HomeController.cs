@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 using System.Web;
 using IdentityModel.Client;
-using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using NJXManagement.HttpModel;
@@ -66,10 +65,32 @@ namespace NJXManagement.Controllers
             return Content(recall);
         }
         [Route("Employee/Add/")]
-        public HttpStatusCode AddEmployee()
+        public string AddEmployee()
         {
-            //var recall = _client.AddEmployee(_accessToken, _bearerModel, employee);
-            return HttpStatusCode.Accepted;
+
+            string bodystr = "";
+            using (StreamReader reader = new StreamReader(Request.Body))
+            { 
+                bodystr = reader.ReadToEndAsync().GetAwaiter().GetResult();
+            }
+
+            var recall = _client.AddEmployee(_accessToken, _bearerModel, bodystr);
+
+            return recall;
+        }
+        [Route("Employee/Edit/{employeeID}")]
+        public string EditEmployee(string employeeID)
+        {
+            string bodystr = "";
+
+            using (StreamReader reader = new StreamReader(Request.Body))
+            {
+                bodystr = reader.ReadToEndAsync().GetAwaiter().GetResult();
+            }
+
+            var recall = _client.EditEmployee(_accessToken, _bearerModel, bodystr, employeeID);
+
+            return recall;
         }
     }
 }

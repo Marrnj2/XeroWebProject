@@ -22,6 +22,7 @@ export default function UpdateEmployeeDialog(props) {
   const [open, setOpen] = React.useState(false);
 
   console.log(props.employee)
+  const [eID] = useState(props.employee.id);
   const [fname, setFName] = useState(props.employee.fname);
   const [lname, setLName] = useState(props.employee.lname);
   const [dob, setDOB] = useState("");
@@ -58,7 +59,21 @@ export default function UpdateEmployeeDialog(props) {
       }
     };
     
-    console.log("submit");
+    console.log("Edit");
+    fetch(`Employee/Edit/${eID}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(employee),
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Success:', data);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
 
     handleClose();
   };
