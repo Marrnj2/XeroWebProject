@@ -8,6 +8,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { makeStyles } from '@material-ui/core/styles';
 import AddIcon from '@material-ui/icons/Add';
+
 const useStyles = makeStyles((theme) => ({
     button: {
       margin: theme.spacing(1),
@@ -18,10 +19,12 @@ const useStyles = makeStyles((theme) => ({
       marginBottom: 0,
     },
   }));
+
  
   
 export default function AddEmployeeDialog() {
   const classes = useStyles();
+
   const [open, setOpen] = React.useState(false);
 
   const [fname, setFName] = useState("");
@@ -38,9 +41,11 @@ export default function AddEmployeeDialog() {
   const handleClickOpen = () => {
     setOpen(true);
   };
+
   const handleClose = () => {
     setOpen(false);
   };
+
   const handleSubmit = (evt) => {
     evt.preventDefault();
     var employee = {
@@ -73,8 +78,10 @@ export default function AddEmployeeDialog() {
     .catch((error) => {
       console.error('Error:', error);
     });
+
     handleClose()
 }
+
   return (
       <>
     <Button
@@ -86,6 +93,7 @@ export default function AddEmployeeDialog() {
   >
     Add Employee
   </Button>
+
       <Dialog
         open={open}
         onClose={handleClose}
@@ -197,7 +205,7 @@ export default function AddEmployeeDialog() {
               value={postcode}
               onChange={e => setPostCode(e.target.value)}
             />
-
+          
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
