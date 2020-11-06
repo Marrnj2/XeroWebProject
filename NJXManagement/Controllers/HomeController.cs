@@ -65,7 +65,7 @@ namespace NJXManagement.Controllers
             return Content(recall);
         }
         [Route("Employee/Add/")]
-        public string AddEmployee()
+        public HttpStatusCode AddEmployee()
         {
 
             string bodystr = "";
@@ -79,16 +79,16 @@ namespace NJXManagement.Controllers
             return recall;
         }
         [Route("Employee/Edit/{employeeID}")]
-        public string EditEmployee(string employeeID)
+        public HttpStatusCode EditEmployee(string employeeID)
         {
-            string bodystr = "";
+            string bContent = "";
 
             using (StreamReader reader = new StreamReader(Request.Body))
             {
-                bodystr = reader.ReadToEndAsync().GetAwaiter().GetResult();
+                bContent = reader.ReadToEndAsync().GetAwaiter().GetResult();
             }
 
-            var recall = _client.EditEmployee(_accessToken, _bearerModel, bodystr, employeeID);
+            var recall = _client.EditEmployee(_accessToken, _bearerModel, bContent, employeeID);
 
             return recall;
         }

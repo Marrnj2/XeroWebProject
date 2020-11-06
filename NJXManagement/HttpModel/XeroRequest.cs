@@ -26,8 +26,6 @@ namespace NJXManagement.HttpModel
         public async Task<TokenResponse> SendRequestAsync(String code)
         {
 
-
-
             TokenResponse accessToken = await Client.RequestAuthorizationCodeTokenAsync(new AuthorizationCodeTokenRequest
             {
                 Address = "https://identity.xero.com/connect/token",
@@ -36,17 +34,11 @@ namespace NJXManagement.HttpModel
                 ClientId = "F68F5B3DC51D422BA4A9CEBF499247CB",
                 ClientSecret = "luTOFed4_aUl6c40c2ftH5fW_TL0ETybDfMq-faA1Z6Ht_j4",
                 RedirectUri = "https://localhost:5001/signin-oidc"
-
             });
             return accessToken;
         }
         public BearerModel BearerToken(TokenResponse accessToken)
         {
-            var options = new JsonSerializerOptions
-            {
-                PropertyNameCaseInsensitive = false,
-
-            };
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get,
                 "https://api.xero.com/connections");
             request.Headers.Add("Authorization", "Bearer " + accessToken.AccessToken);
@@ -87,7 +79,7 @@ namespace NJXManagement.HttpModel
 
             return responseStream;
         }
-        public string AddEmployee(TokenResponse accessToken, BearerModel bearerModel, string employee)
+        public HttpStatusCode AddEmployee(TokenResponse accessToken, BearerModel bearerModel, string employee)
         {
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post,
             "https://api.xero.com/payroll.xro/2.0/employees");
@@ -98,11 +90,10 @@ namespace NJXManagement.HttpModel
             
             request.Content = employeeContent;
             var response = Client.SendAsync(request).GetAwaiter().GetResult();
-            var responseStream = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
 
-            return responseStream;
+            return response.StatusCode;
         }
-        public string EditEmployee(TokenResponse accessToken, BearerModel bearerModel, string employee,string employeID)
+        public HttpStatusCode EditEmployee(TokenResponse accessToken, BearerModel bearerModel, string employee,string employeID)
         {
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Put,
             "https://api.xero.com/payroll.xro/2.0/employees/"+employeID);
@@ -112,8 +103,7 @@ namespace NJXManagement.HttpModel
             StringContent employeeContent = new StringContent(employee, Encoding.UTF8, "application/json");
             request.Content = employeeContent;
             var response = Client.SendAsync(request).GetAwaiter().GetResult();
-            var responseStream = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-            return responseStream;
+            return response.StatusCode;
         }
     }
 }
