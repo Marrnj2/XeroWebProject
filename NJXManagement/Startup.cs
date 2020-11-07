@@ -15,6 +15,7 @@ using System;
 using NJXManagement.HttpModel;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using IdentityModel.Client;
+using Xero.NetStandard.OAuth2.Config;
 
 namespace NJXManagement
 {
@@ -30,6 +31,14 @@ namespace NJXManagement
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+
+            services.TryAddSingleton(new XeroConfiguration
+            {
+                ClientId = Configuration["Xero:ClientId"],
+                ClientSecret = Configuration["Xero:ClientSecret"]
+            });
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));

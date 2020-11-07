@@ -5,6 +5,7 @@ using Newtonsoft.Json.Linq;
 using NJXManagement.Models;
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Net.Http;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -24,12 +25,10 @@ namespace NJXManagement.HttpModel
 
         }
         [HttpPost]
-        public async Task<TokenResponse> SendRequestAsync(String code)
+        public TokenResponse SendRequest(String code)
         {
 
-
-
-            TokenResponse accessToken = await Client.RequestAuthorizationCodeTokenAsync(new AuthorizationCodeTokenRequest
+            TokenResponse accessToken = Client.RequestAuthorizationCodeTokenAsync(new AuthorizationCodeTokenRequest
             {
                 Address = "https://identity.xero.com/connect/token",
                 GrantType = "code",
@@ -40,16 +39,12 @@ namespace NJXManagement.HttpModel
                 Parameters ={
                 { "scope", "openid profile email accounting.transactions accounting.contacts accounting.settingsoffline_access"}
                 }
-            });
+            }).GetAwaiter().GetResult();
             return accessToken;
         }
         public BearerModel BearerToken(TokenResponse accessToken)
         {
-            var options = new JsonSerializerOptions
-            {
-                PropertyNameCaseInsensitive = false,
 
-            };
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get,
                 "https://api.xero.com/connections");
             request.Headers.Add("Authorization", "Bearer " + accessToken.AccessToken);
@@ -57,10 +52,32 @@ namespace NJXManagement.HttpModel
             var response = Client.SendAsync(request).GetAwaiter().GetResult();
             var responseStream = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
 
-
             var dict = JsonConvert.DeserializeObject<List<BearerModel>>(responseStream);
 
             return dict[0];
+        }
+        public HttpStatusCode RefreshToken(TokenResponse accessToken)
+        {
+
+            RefreshModel refreshModel = new RefreshModel
+            {
+                grant_type = "refresh_token",
+                client_id = "F68F5B3DC51D422BA4A9CEBF499247CB",
+                refresh_token = accessToken.RefreshToken
+            };
+            var jsonString = System.Text.Json.JsonSerializer.Serialize(refreshModel);
+            StringContent bodyContent = new StringContent(jsonString);
+            
+            TokenResponse refreshToken = Client.RequestRefreshTokenAsync(new RefreshTokenRequest
+            {
+                Address = "https://identity.xero.com/connect/token",
+                ClientId = "F68F5B3DC51D422BA4A9CEBF499247CB",
+                ClientSecret = "luTOFed4_aUl6c40c2ftH5fW_TL0ETybDfMq-faA1Z6Ht_j4",
+                GrantType = "refresh_token",
+                RefreshToken = accessToken.RefreshToken
+            }).GetAwaiter().GetResult();
+            accessToken = refreshToken;
+            return refreshToken.HttpStatusCode;
         }
         public string PayrollCall(TokenResponse accessToken, BearerModel bearerModel, string endPoint)
         {
@@ -80,7 +97,7 @@ namespace NJXManagement.HttpModel
         {
 
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get,
-                    " 	https://api.xero.com/api.xro/2.0/" + endPoint);
+                    "https://api.xero.com/api.xro/2.0/" + endPoint);
             request.Headers.Add("Authorization", "Bearer " + accessToken.AccessToken);
             request.Headers.Add("xero-tenant-id", bearerModel.TenantId);
 

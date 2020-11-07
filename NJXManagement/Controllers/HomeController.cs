@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
@@ -30,18 +31,26 @@ namespace NJXManagement.Controllers
         [HttpGet]
         public IActionResult Path()
         {
-            XeroConfiguration xconfig = new XeroConfiguration();
-
-            xconfig.ClientId = "F68F5B3DC51D422BA4A9CEBF499247CB";
-            xconfig.ClientSecret = "luTOFed4_aUl6c40c2ftH5fW_TL0ETybDfMq-faA1Z6Ht_j4";
-            xconfig.CallbackUri = new Uri("https://localhost:5001/signin-oidc");
-            xconfig.Scope = "openid profile email files accounting.transactions accounting.contacts payroll.employees offline_access";
+            XeroConfiguration xconfig = new XeroConfiguration
+            {
+                ClientId = "F68F5B3DC51D422BA4A9CEBF499247CB",
+                ClientSecret = "luTOFed4_aUl6c40c2ftH5fW_TL0ETybDfMq-faA1Z6Ht_j4",
+                CallbackUri = new Uri("https://localhost:5001/signin-oidc"),
+                Scope = "openid profile email files accounting.transactions accounting.contacts payroll.employees offline_access"
+            };
             var XRequest = new XeroClient(xconfig);
 
             var url = XRequest.BuildLoginUri();
 
             return Redirect(url);
         }
+        [Route("Refresh")]
+        public HttpStatusCode TestRefresh()
+        {
+            var response =_client.RefreshToken(_accessToken);
+            return response;
+        }
+
         [Route("signin-oidc")]
         public void Method()
         {
@@ -49,7 +58,7 @@ namespace NJXManagement.Controllers
             Uri u = new Uri(url);
             string code = HttpUtility.ParseQueryString(u.Query).Get("code");
 
-            _accessToken = _client.SendRequestAsync(code).GetAwaiter().GetResult();
+            _accessToken = _client.SendRequest(code);
             _bearerModel = _client.BearerToken(_accessToken);
         }
         [Route("Payroll/{endPoint}")]
