@@ -1,12 +1,12 @@
 ﻿using IdentityModel.Client;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using NJXManagement.Models;
 using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
+
 
 namespace NJXManagement.HttpModel
 {
@@ -36,11 +36,11 @@ namespace NJXManagement.HttpModel
                 }
             }).GetAwaiter().GetResult();
             _accessToken = accessToken;
+
             return accessToken;
         }
         public BearerModel BearerToken()
         {
-
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get,
                 "https://api.xero.com/connections");
             request.Headers.Add("Authorization", "Bearer " + _accessToken.AccessToken);
@@ -99,6 +99,7 @@ namespace NJXManagement.HttpModel
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get,
                     "https://api.xero.com/api.xro/2.0/" + endPoint);
             request.Headers.Add("Authorization", "Bearer " + _accessToken.AccessToken);
+
             request.Headers.Add("xero-tenant-id", bearerModel.TenantId);
 
             HttpResponseMessage response = Client.SendAsync(request).GetAwaiter().GetResult();
@@ -106,6 +107,32 @@ namespace NJXManagement.HttpModel
             string responseStream = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
 
             return responseStream;
+        }
+        public HttpStatusCode AddEmployee(TokenResponse accessToken, BearerModel bearerModel, string employee)
+        {
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post,
+            "https://api.xero.com/payroll.xro/2.0/employees");
+            request.Headers.Add("Authorization", "Bearer " + accessToken.AccessToken);
+            request.Headers.Add("xero-tenant-id", bearerModel.TenantId);
+
+            StringContent employeeContent = new StringContent(employee, Encoding.UTF8, "application/json");
+            
+            request.Content = employeeContent;
+            var response = Client.SendAsync(request).GetAwaiter().GetResult();
+
+            return response.StatusCode;
+        }
+        public HttpStatusCode EditEmployee(TokenResponse accessToken, BearerModel bearerModel, string employee,string employeID)
+        {
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Put,
+            "https://api.xero.com/payroll.xro/2.0/employees/"+employeID);
+            request.Headers.Add("Authorization", "Bearer " + accessToken.AccessToken);
+            request.Headers.Add("xero-tenant-id", bearerModel.TenantId);
+
+            StringContent employeeContent = new StringContent(employee, Encoding.UTF8, "application/json");
+            request.Content = employeeContent;
+            var response = Client.SendAsync(request).GetAwaiter().GetResult();
+            return response.StatusCode;
         }
     }
 }
