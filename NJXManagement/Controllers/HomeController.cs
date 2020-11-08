@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Text;
@@ -30,38 +29,49 @@ namespace NJXManagement.Controllers
         [HttpGet]
         public IActionResult Path()
         {
-            XeroConfiguration xconfig = new XeroConfiguration();
+            XeroConfiguration xconfig = new XeroConfiguration
+            {
+                ClientId = "F68F5B3DC51D422BA4A9CEBF499247CB",
+                ClientSecret = "luTOFed4_aUl6c40c2ftH5fW_TL0ETybDfMq-faA1Z6Ht_j4",
+                CallbackUri = new Uri("https://localhost:5001/signin-oidc"),
+                Scope = "openid profile email files accounting.transactions accounting.contacts payroll.employees offline_access"
+            };
+            XeroClient XRequest = new XeroClient(xconfig);
 
-            xconfig.ClientId = "F68F5B3DC51D422BA4A9CEBF499247CB";
-            xconfig.ClientSecret = "luTOFed4_aUl6c40c2ftH5fW_TL0ETybDfMq-faA1Z6Ht_j4";
-            xconfig.CallbackUri = new Uri("https://localhost:5001/signin-oidc");
-            xconfig.Scope = "openid profile email files accounting.transactions accounting.contacts payroll.employees offline_access";
-            var XRequest = new XeroClient(xconfig);
-
-            var url = XRequest.BuildLoginUri();
+            string url = XRequest.BuildLoginUri();
 
             return Redirect(url);
         }
+        public void TestRefresh()
+        {
+            if(_client.CheckTokenStatus(_bearerModel).StatusCode == HttpStatusCode.Unauthorized)
+            {
+               _accessToken = _client.RefreshToken();
+            }
+        }
+
         [Route("signin-oidc")]
         public void Method()
         {
-            var url = UriHelper.GetEncodedUrl(HttpContext.Request);
+            string url = UriHelper.GetEncodedUrl(HttpContext.Request);
             Uri u = new Uri(url);
             string code = HttpUtility.ParseQueryString(u.Query).Get("code");
 
-            _accessToken = _client.SendRequestAsync(code).GetAwaiter().GetResult();
-            _bearerModel = _client.BearerToken(_accessToken);
+            _accessToken = _client.SendRequest(code);
+            _bearerModel = _client.BearerToken();
         }
         [Route("Payroll/{endPoint}")]
         public IActionResult FetchPayroll(string endPoint)
         {
-            var recall = _client.PayrollCall(_accessToken, _bearerModel, endPoint);
+            TestRefresh();
+            string recall = _client.PayrollCall(_bearerModel, endPoint);
             return Content(recall);
         }
         [Route("Xero/{endPoint}")]
         public IActionResult FetchXero(string endPoint)
         {
-            var recall = _client.AccountsCall(_accessToken, _bearerModel, endPoint);
+            TestRefresh();
+            string recall = _client.AccountsCall(_bearerModel, endPoint);
             return Content(recall);
         }
         [Route("Employee/Add/")]
