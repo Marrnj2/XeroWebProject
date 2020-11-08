@@ -13,81 +13,6 @@ import {
   ResponsiveContainer
 } from "recharts";
 
-const data = [
-  {
-    name: "Page A",
-    uv: 4000,
-    pv: 2400,
-    amt: 2400
-  },
-  {
-    name: "Page B",
-    uv: 3000,
-    pv: 1398,
-    amt: 2210
-  },
-  {
-    name: "Page C",
-    uv: 2000,
-    pv: 9800,
-    amt: 2290
-  },
-  {
-    name: "Page D",
-    uv: 2780,
-    pv: 3908,
-    amt: 2000
-  },
-  {
-    name: "Page E",
-    uv: 1890,
-    pv: 4800,
-    amt: 2181
-  },
-  {
-    name: "Page F",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500
-  },
-  {
-    name: "Page G",
-    uv: 3490,
-    pv: 4300,
-    amt: 2100
-  },
-  {
-    name: "Page H",
-    uv: 2780,
-    pv: 3908,
-    amt: 2000
-  },
-  {
-    name: "Page I",
-    uv: 1890,
-    pv: 4800,
-    amt: 2181
-  },
-  {
-    name: "Page J",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500
-  },
-  {
-    name: "Page K",
-    uv: 3490,
-    pv: 4300,
-    amt: 2100
-  },
-  {
-    name: "Page L",
-    uv: 2780,
-    pv: 3908,
-    amt: 2000
-  }
-];
-
 export default function InvoiceTable() {
   const [invoicesData, setInvoicesData] = useState([]);
 
@@ -114,31 +39,30 @@ export default function InvoiceTable() {
   };
 
   function getInvoiceTotals(invoices) {
-    var temp = {};
 
-    invoices.forEach(function(i) {
-        let monthYear = i["DueDateString"].split('T')[0]
-        monthYear = monthYear.slice(0, -3)
+    let newArray = []
 
-      if (temp.hasOwnProperty(monthYear)) {
-          // add name and amount
-          temp[monthYear] = temp[monthYear] + i["AmountDue"];
-      } else {
-          // set new key and assign value
-          temp[monthYear] = i["AmountDue"];
-      }
-    });
-    
-    var obj2 = [];
-    
-    for (var prop in temp) {
-      obj2.push({ name: prop, value: temp[prop] });
+    for (const i in invoices) {
+      newArray.push({date: invoices[i]["DueDateString"].split('T')[0].slice(0, -3), amountPaid: invoices[i].AmountPaid, amountDue: invoices[i].AmountDue})
     }
-    
-    console.log(obj2);
 
+    const result = [...newArray.reduce((r, o) => {
+      const key = o["date"];
 
-      return invoices;
+      const item = r.get(key) || Object.assign({}, o, {
+        amountDue: 0,
+        amountPaid: 0
+      });
+
+      item.amountDue += o["amountDue"];
+      item.amountPaid += o["amountPaid"];
+
+      return r.set(key, item);
+    }, new Map).values()];
+
+    console.log(result);
+
+    return result;
   }
 
   return (
@@ -157,12 +81,12 @@ export default function InvoiceTable() {
             }}
           >
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" />
+            <XAxis dataKey="date" />
             <YAxis />
             <Tooltip />
             <Legend />
-            <Bar dataKey="AmountPaid" stackId="a" fill="#68A3DE" />
-            <Bar dataKey="AmountDue" stackId="a" fill="lightGrey" />
+            <Bar dataKey="amountPaid" stackId="a" fill="#68A3DE" />
+            <Bar dataKey="amountDue" stackId="a" fill="lightGrey" />
           </BarChart>
         </ResponsiveContainer>
       </div>
