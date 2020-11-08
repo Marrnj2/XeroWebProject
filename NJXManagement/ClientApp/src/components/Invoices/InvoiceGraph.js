@@ -37,7 +37,7 @@ export default function InvoiceTable() {
 
     for (let month in totals) {
       let dateParts = totals[month].date.split("-")
-      totals[month].date = Moment(dateParts[1]).format("MMMM") + " " + dateParts[0]
+      totals[month].date = Moment(dateParts[1]).format("MMM") + " " + dateParts[0]
     }
 
     // save into state
