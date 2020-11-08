@@ -58,8 +58,6 @@ namespace NJXManagement
 
 
             services.AddHttpClient();
-            services.TryAddSingleton<BearerModel>();
-            services.TryAddSingleton<TokenResponse>();
             services.AddHttpClient<XeroRequest>();
             
 

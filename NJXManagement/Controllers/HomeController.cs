@@ -38,39 +38,42 @@ namespace NJXManagement.Controllers
                 CallbackUri = new Uri("https://localhost:5001/signin-oidc"),
                 Scope = "openid profile email files accounting.transactions accounting.contacts payroll.employees offline_access"
             };
-            var XRequest = new XeroClient(xconfig);
+            XeroClient XRequest = new XeroClient(xconfig);
 
-            var url = XRequest.BuildLoginUri();
+            string url = XRequest.BuildLoginUri();
 
             return Redirect(url);
         }
-        [Route("Refresh")]
-        public HttpStatusCode TestRefresh()
+        public void TestRefresh()
         {
-            var response =_client.RefreshToken(_accessToken);
-            return response;
+            if(_client.CheckTokenStatus(_bearerModel).StatusCode == HttpStatusCode.Unauthorized)
+            {
+               _accessToken = _client.RefreshToken();
+            }
         }
 
         [Route("signin-oidc")]
         public void Method()
         {
-            var url = UriHelper.GetEncodedUrl(HttpContext.Request);
+            string url = UriHelper.GetEncodedUrl(HttpContext.Request);
             Uri u = new Uri(url);
             string code = HttpUtility.ParseQueryString(u.Query).Get("code");
 
             _accessToken = _client.SendRequest(code);
-            _bearerModel = _client.BearerToken(_accessToken);
+            _bearerModel = _client.BearerToken();
         }
         [Route("Payroll/{endPoint}")]
         public IActionResult FetchPayroll(string endPoint)
         {
-            var recall = _client.PayrollCall(_accessToken, _bearerModel, endPoint);
+            TestRefresh();
+            string recall = _client.PayrollCall(_bearerModel, endPoint);
             return Content(recall);
         }
         [Route("Xero/{endPoint}")]
         public IActionResult FetchXero(string endPoint)
         {
-            var recall = _client.AccountsCall(_accessToken, _bearerModel, endPoint);
+            TestRefresh();
+            string recall = _client.AccountsCall(_bearerModel, endPoint);
             return Content(recall);
         }
     }

@@ -7,22 +7,17 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace NJXManagement.HttpModel
 {
     public class XeroRequest
     {
         public HttpClient Client { get; }
-
+        private static TokenResponse _accessToken;
         public XeroRequest(HttpClient client)
         {
            
             Client = client;
-
         }
         [HttpPost]
         public TokenResponse SendRequest(String code)
@@ -40,70 +35,75 @@ namespace NJXManagement.HttpModel
                 { "scope", "openid profile email accounting.transactions accounting.contacts accounting.settingsoffline_access"}
                 }
             }).GetAwaiter().GetResult();
+            _accessToken = accessToken;
             return accessToken;
         }
-        public BearerModel BearerToken(TokenResponse accessToken)
+        public BearerModel BearerToken()
         {
 
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get,
                 "https://api.xero.com/connections");
-            request.Headers.Add("Authorization", "Bearer " + accessToken.AccessToken);
+            request.Headers.Add("Authorization", "Bearer " + _accessToken.AccessToken);
 
-            var response = Client.SendAsync(request).GetAwaiter().GetResult();
-            var responseStream = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+            HttpResponseMessage response = Client.SendAsync(request).GetAwaiter().GetResult();
+            string responseStream = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
 
-            var dict = JsonConvert.DeserializeObject<List<BearerModel>>(responseStream);
+            List<BearerModel> dict = JsonConvert.DeserializeObject<List<BearerModel>>(responseStream);
 
             return dict[0];
         }
-        public HttpStatusCode RefreshToken(TokenResponse accessToken)
+        public HttpResponseMessage CheckTokenStatus(BearerModel bearerModel)
         {
-
-            RefreshModel refreshModel = new RefreshModel
-            {
-                grant_type = "refresh_token",
-                client_id = "F68F5B3DC51D422BA4A9CEBF499247CB",
-                refresh_token = accessToken.RefreshToken
-            };
-            var jsonString = System.Text.Json.JsonSerializer.Serialize(refreshModel);
-            StringContent bodyContent = new StringContent(jsonString);
-            
-            TokenResponse refreshToken = Client.RequestRefreshTokenAsync(new RefreshTokenRequest
-            {
-                Address = "https://identity.xero.com/connect/token",
-                ClientId = "F68F5B3DC51D422BA4A9CEBF499247CB",
-                ClientSecret = "luTOFed4_aUl6c40c2ftH5fW_TL0ETybDfMq-faA1Z6Ht_j4",
-                GrantType = "refresh_token",
-                RefreshToken = accessToken.RefreshToken
-            }).GetAwaiter().GetResult();
-            accessToken = refreshToken;
-            return refreshToken.HttpStatusCode;
-        }
-        public string PayrollCall(TokenResponse accessToken, BearerModel bearerModel, string endPoint)
-        {
-
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get,
-                              "https://api.xero.com/payroll.xro/2.0/" + endPoint);
-            request.Headers.Add("Authorization", "Bearer " + accessToken.AccessToken);
+                           "https://api.xero.com/payroll.xro/2.0/employees");
+            request.Headers.Add("Authorization", "Bearer " + _accessToken.AccessToken);
             request.Headers.Add("xero-tenant-id", bearerModel.TenantId);
 
-            var response = Client.SendAsync(request).GetAwaiter().GetResult();
+            HttpResponseMessage response = Client.SendAsync(request).GetAwaiter().GetResult();
 
-            var responseStream = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+            return response;
+        }
+        public TokenResponse RefreshToken()
+        {
+
+                TokenResponse refreshToken = Client.RequestRefreshTokenAsync(new RefreshTokenRequest
+                {
+                    Address = "https://identity.xero.com/connect/token",
+                    ClientId = "F68F5B3DC51D422BA4A9CEBF499247CB",
+                    ClientSecret = "luTOFed4_aUl6c40c2ftH5fW_TL0ETybDfMq-faA1Z6Ht_j4",
+                    GrantType = "refresh_token",
+                    RefreshToken = _accessToken.RefreshToken
+                }).GetAwaiter().GetResult();
+                _accessToken = refreshToken;
+            
+
+            return _accessToken;
+        }
+        public string PayrollCall (BearerModel bearerModel, string endPoint)
+        {
+            RefreshToken();
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get,
+                              "https://api.xero.com/payroll.xro/2.0/" + endPoint);
+            request.Headers.Add("Authorization", "Bearer " + _accessToken.AccessToken);
+            request.Headers.Add("xero-tenant-id", bearerModel.TenantId);
+
+            HttpResponseMessage response = Client.SendAsync(request).GetAwaiter().GetResult();
+
+            string responseStream = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
 
             return responseStream;
         }
-        public string AccountsCall(TokenResponse accessToken, BearerModel bearerModel, string endPoint)
+        public string AccountsCall(BearerModel bearerModel, string endPoint)
         {
 
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get,
                     "https://api.xero.com/api.xro/2.0/" + endPoint);
-            request.Headers.Add("Authorization", "Bearer " + accessToken.AccessToken);
+            request.Headers.Add("Authorization", "Bearer " + _accessToken.AccessToken);
             request.Headers.Add("xero-tenant-id", bearerModel.TenantId);
 
-            var response = Client.SendAsync(request).GetAwaiter().GetResult();
+            HttpResponseMessage response = Client.SendAsync(request).GetAwaiter().GetResult();
 
-            var responseStream = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+            string responseStream = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
 
             return responseStream;
         }
