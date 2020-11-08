@@ -12,6 +12,7 @@ import {
   Legend,
   ResponsiveContainer
 } from "recharts";
+import Moment from 'moment';
 
 export default function InvoiceTable() {
   const [invoicesData, setInvoicesData] = useState([]);
@@ -33,6 +34,11 @@ export default function InvoiceTable() {
     );
 
     let totals = getInvoiceTotals(jsonData.Invoices);
+
+    for (let month in totals) {
+      let dateParts = totals[month].date.split("-")
+      totals[month].date = Moment(dateParts[1]).format("MMMM") + " " + dateParts[0]
+    }
 
     // save into state
     setInvoicesData(totals);
