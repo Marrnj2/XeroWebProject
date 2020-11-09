@@ -49,7 +49,7 @@ export default function EmployeesTable() {
     // get employee data from api
     const getEmployeeData = async () => {
       console.log("START API REQUEST")
-      const response = await fetch("Payroll/employees ");
+      const response = await fetch("Payroll/employees");
       const jsonData = await response.json();
       let employees = jsonData["employees"];
 

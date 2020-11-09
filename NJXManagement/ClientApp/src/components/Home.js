@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component,useEffect } from 'react';
 import Grid from '@material-ui/core/Grid';
 
 import BusinessBankAccount from "./Dashboard/BusinessBankAccount";
@@ -9,7 +9,6 @@ import Bills from "./Dashboard/Bills";
 
 export class Home extends Component {
   static displayName = Home.name;
-
   render () {
     return (
       <div className="component-grid">

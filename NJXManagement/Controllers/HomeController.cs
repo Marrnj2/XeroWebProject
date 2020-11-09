@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.IO;
 using System.Net;
-using System.Net.Http;
-using System.Text;
-using System.Text.Json;
 using System.Web;
 using IdentityModel.Client;
 using Microsoft.AspNetCore.Http;
@@ -25,22 +22,27 @@ namespace NJXManagement.Controllers
         {
             _client = client;
         }
-        [Route("Path")]
+        [Route("/SignIn")]
         [HttpGet]
-        public IActionResult Path()
+        public RedirectResult SignIn()
         {
-            XeroConfiguration xconfig = new XeroConfiguration
+            if(_accessToken == null)
             {
-                ClientId = "F68F5B3DC51D422BA4A9CEBF499247CB",
-                ClientSecret = "luTOFed4_aUl6c40c2ftH5fW_TL0ETybDfMq-faA1Z6Ht_j4",
-                CallbackUri = new Uri("https://localhost:5001/signin-oidc"),
-                Scope = "openid profile email files accounting.transactions accounting.contacts payroll.employees offline_access"
-            };
-            XeroClient XRequest = new XeroClient(xconfig);
+                XeroConfiguration xconfig = new XeroConfiguration
+                {
+                    ClientId = "F68F5B3DC51D422BA4A9CEBF499247CB",
+                    ClientSecret = "luTOFed4_aUl6c40c2ftH5fW_TL0ETybDfMq-faA1Z6Ht_j4",
+                    CallbackUri = new Uri("https://localhost:5001/signin-oidc"),
+                    Scope = "openid profile email files accounting.transactions accounting.contacts payroll.employees offline_access"
+                };
+                XeroClient XRequest = new XeroClient(xconfig);
 
-            string url = XRequest.BuildLoginUri();
+                string url = XRequest.BuildLoginUri();
 
-            return Redirect(url);
+                return Redirect(url);
+            }
+            return Redirect("/");
+          
         }
         public void TestRefresh()
         {
@@ -51,7 +53,7 @@ namespace NJXManagement.Controllers
         }
 
         [Route("signin-oidc")]
-        public void Method()
+        public RedirectResult Method()
         {
             string url = UriHelper.GetEncodedUrl(HttpContext.Request);
             Uri u = new Uri(url);
@@ -59,6 +61,7 @@ namespace NJXManagement.Controllers
 
             _accessToken = _client.SendRequest(code);
             _bearerModel = _client.BearerToken();
+            return Redirect("/");
         }
         [Route("Payroll/{endPoint}")]
         public IActionResult FetchPayroll(string endPoint)
