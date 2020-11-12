@@ -3,7 +3,7 @@ import { Component } from 'react';
 import authService from './AuthorizeService';
 import { AuthenticationResultStatus } from './AuthorizeService';
 import { LoginActions, QueryParameterNames, ApplicationPaths } from './ApiAuthorizationConstants';
-
+import {Getter} from "./TokenGet"
 // The main responsibility of this component is to handle the user's login process.
 // This is the starting point for the login process. Any component that needs to authenticate
 // a user can simply perform a redirect to this component with a returnUrl query parameter and
@@ -70,7 +70,7 @@ export class Login extends Component {
             case AuthenticationResultStatus.Redirect:
                 break;
             case AuthenticationResultStatus.Success:
-                await this.navigateToReturnUrl(returnUrl);
+                Getter();
                 break;
             case AuthenticationResultStatus.Fail:
                 this.setState({ message: result.message });
@@ -89,7 +89,7 @@ export class Login extends Component {
                 // is when we are doing a redirect sign in flow.
                 throw new Error('Should not redirect.');
             case AuthenticationResultStatus.Success:
-                await this.navigateToReturnUrl(this.getReturnUrl(result.state));
+                Getter();
                 break;
             case AuthenticationResultStatus.Fail:
                 this.setState({ message: result.message });

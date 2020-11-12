@@ -1,4 +1,4 @@
-import React, { Component,useState,useEffect } from 'react';
+import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 
 import BusinessBankAccount from "./Dashboard/BusinessBankAccount";
@@ -7,19 +7,10 @@ import TotalCashInAndOut from "./Dashboard/TotalCashInAndOut";
 import AccountWatchlist from "./Dashboard/AccountWatchlist";
 import Bills from "./Dashboard/Bills";
 
-export function Home (){
-    const [displayName,setDisplayname] = useState(Home.name)
-    useEffect(() => {
-      fetch("/SignIn")
-      .then(r => r.text())
-      .then(data => {
-        if(data != "")
-        {
-          window.location.href = data
-        }
-      })
-      },[])
-          
+export class Home extends Component {
+  static displayName = Home.name;
+
+  render () {
     return (
       <div className="component-grid">
         <Grid container spacing={3}>
@@ -43,4 +34,5 @@ export function Home (){
         </Grid>
       </div>
     );
+  }
 }
