@@ -62,7 +62,7 @@ export default function InvoiceTable() {
         <TableBody>
           {invoicesData.map((invoice) => (
             <TableRow key={invoice.InvoiceID}>
-                <TableCell>Status</TableCell>
+                <TableCell>{(invoice["Total"] - invoice["AmountPaid"]) > 0 ? "Open" : "Paid"}</TableCell>
                 <TableCell>{Moment(invoice["DateString"].split('T')[0]).format('DD-MM-YYYY')}</TableCell>
                 <TableCell>{Moment(invoice["DueDateString"].split('T')[0]).format('DD-MM-YYYY')}</TableCell>
                 <TableCell>{invoice.Contact["Name"]}</TableCell>
