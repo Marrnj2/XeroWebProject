@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
-
+using System.Text;
 
 namespace NJXManagement.HttpModel
 {
@@ -32,7 +32,7 @@ namespace NJXManagement.HttpModel
                 ClientSecret = "luTOFed4_aUl6c40c2ftH5fW_TL0ETybDfMq-faA1Z6Ht_j4",
                 RedirectUri = "https://localhost:5001/signin-oidc",
                 Parameters ={
-                { "scope", "openid profile email accounting.transactions accounting.contacts accounting.settingsoffline_access"}
+                { "scope", "openid profile email accounting.transactions payroll.employees accounting.contacts accounting.settingsoffline_access"}
                 }
             }).GetAwaiter().GetResult();
             _accessToken = accessToken;
@@ -81,7 +81,6 @@ namespace NJXManagement.HttpModel
         }
         public string PayrollCall (BearerModel bearerModel, string endPoint)
         {
-            RefreshToken();
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get,
                               "https://api.xero.com/payroll.xro/2.0/" + endPoint);
             request.Headers.Add("Authorization", "Bearer " + _accessToken.AccessToken);
