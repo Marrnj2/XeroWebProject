@@ -21,6 +21,7 @@ import { LoginMenu } from "./api-authorization/LoginMenu";
 
 import PersonIcon from "@material-ui/icons/Person";
 import HomeIcon from "@material-ui/icons/Home";
+import DescriptionIcon from '@material-ui/icons/Description';
 
 const drawerWidth = 240;
 
@@ -97,6 +98,17 @@ function NavigationLayout(props) {
               <PersonIcon />
             </ListItemIcon>
             <ListItemText primary={"Employees"} />
+          </ListItem>
+        </NavLink>
+        </NavItem>
+
+        <NavItem>
+          <NavLink tag={Link} className="text-dark" to="/invoices">
+          <ListItem button key={"Invoices"}>
+            <ListItemIcon>
+              <DescriptionIcon />
+            </ListItemIcon>
+            <ListItemText primary={"Invoices"} />
           </ListItem>
         </NavLink>
         </NavItem>
