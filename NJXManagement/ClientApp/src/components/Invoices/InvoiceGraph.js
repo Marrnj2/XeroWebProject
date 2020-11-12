@@ -35,6 +35,7 @@ export default function InvoiceTable() {
 
     let totals = getInvoiceTotals(jsonData.Invoices);
 
+    // change date format
     for (let month in totals) {
       let dateParts = totals[month].date.split("-")
       totals[month].date = Moment(dateParts[1]).format("MMM") + " " + dateParts[0]
@@ -91,8 +92,8 @@ export default function InvoiceTable() {
             <YAxis />
             <Tooltip />
             <Legend />
-            <Bar dataKey="amountPaid" stackId="a" fill="#68A3DE" />
-            <Bar dataKey="amountDue" stackId="a" fill="lightGrey" />
+            <Bar dataKey="amountPaid" stackId="a" fill="#68A3DE" name="Paid"/>
+            <Bar dataKey="amountDue" stackId="a" fill="lightGrey" name="Due"/>
           </BarChart>
         </ResponsiveContainer>
       </div>
