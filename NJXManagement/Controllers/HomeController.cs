@@ -23,10 +23,10 @@ namespace NJXManagement.Controllers
             _client = client;
         }
         [Route("/SignIn")]
-        [HttpGet]
-        public RedirectResult SignIn()
+        public string SignIn()
         {
-            if(_accessToken == null)
+            string url;
+            if (_accessToken == null)
             {
                 XeroConfiguration xconfig = new XeroConfiguration
                 {
@@ -37,11 +37,14 @@ namespace NJXManagement.Controllers
                 };
                 XeroClient XRequest = new XeroClient(xconfig);
 
-                string url = XRequest.BuildLoginUri();
+                url = XRequest.BuildLoginUri();
 
-                return Redirect(url);
             }
-            return Redirect("/");
+            else
+            {
+                url = null;
+            }
+            return url;
           
         }
         public void TestRefresh()
