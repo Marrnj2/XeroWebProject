@@ -14,7 +14,16 @@ import {
 } from "recharts";
 import Moment from 'moment';
 
+
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    marginBottom: "30px",
+  },
+}));
+
 export default function InvoiceTable() {
+  const classes = useStyles();
+
   const [invoicesData, setInvoicesData] = useState([]);
 
   // on component load get api data
@@ -73,7 +82,7 @@ export default function InvoiceTable() {
   }
 
   return (
-    <Paper variant="outlined" className="card-paper">
+    <Paper variant="outlined" className={"card-paper " + classes.paper}>
       <h5>Invoices</h5>
       <hr></hr>
       <div style={{ width: "100%", height: 350 }}>
