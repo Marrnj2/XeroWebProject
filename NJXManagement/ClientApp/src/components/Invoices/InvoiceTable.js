@@ -17,6 +17,20 @@ const useStyles = makeStyles((theme) => ({
       paddingBottom: 0,
       marginBottom: 0,
     },
+    openState: {
+      backgroundColor: "#68A3DE",
+      color: "white",
+      padding: "7px",
+      textAlign: "center",
+      borderRadius: "1px"
+    },
+    paidState: {
+      backgroundColor: "lightGrey",
+      color: "white",
+      padding: "7px",
+      textAlign: "center",
+      borderRadius: "1px"
+    },
   }));
 
 export default function InvoiceTable() {
@@ -43,6 +57,14 @@ export default function InvoiceTable() {
       setInvoicesData(jsonData.Invoices)
     };
 
+    const OpenState = () => {
+      return <div className={classes.openState}>Open</div>
+    }
+
+    const PaidState = () => {
+      return <div className={classes.paidState}>Paid</div>
+    }
+
   return (
     <Paper variant="outlined" className="card-paper">
     <h5>All Invoices</h5>
@@ -62,7 +84,7 @@ export default function InvoiceTable() {
         <TableBody>
           {invoicesData.map((invoice) => (
             <TableRow key={invoice.InvoiceID}>
-                <TableCell>{(invoice["Total"] - invoice["AmountPaid"]) > 0 ? "Open" : "Paid"}</TableCell>
+                <TableCell>{(invoice["Total"] - invoice["AmountPaid"]) > 0 ? OpenState() : PaidState()}</TableCell>
                 <TableCell>{Moment(invoice["DateString"].split('T')[0]).format('DD-MM-YYYY')}</TableCell>
                 <TableCell>{Moment(invoice["DueDateString"].split('T')[0]).format('DD-MM-YYYY')}</TableCell>
                 <TableCell>{invoice.Contact["Name"]}</TableCell>
