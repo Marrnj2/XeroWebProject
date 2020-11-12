@@ -83,7 +83,7 @@ export default function InvoiceTable() {
 
   return (
     <Paper variant="outlined" className={"card-paper " + classes.paper}>
-      <h5>Invoices</h5>
+      <h5>Overview</h5>
       <hr></hr>
       <div style={{ width: "100%", height: 350 }}>
         <ResponsiveContainer>

@@ -45,7 +45,7 @@ export default function InvoiceTable() {
 
   return (
     <Paper variant="outlined" className="card-paper">
-    <h5>Invoices</h5>
+    <h5>All Invoices</h5>
     <hr></hr>
     <Table className={classes.table}  size="small" aria-label="simple table">
         <TableHead>
