@@ -15,12 +15,18 @@ export default function AccountWatchlist() {
     const response = await fetch("Xero/Organisation");
     const jsonData = await response.json();
     console.log(jsonData.Organisations[0]);
+
+    setOrganisationData(jsonData.Organisations[0])
   };
 
   return (
     <Paper variant="outlined" className="card-paper">
       <h5>Organisations</h5>
       <hr></hr>
+        <p>{organisationData.Name}</p>
+        <p>{organisationData.CountryCode}</p>
+        <p>{organisationData.FinancialYearEndDay}</p>
+        <p>{organisationData.FinancialYearEndMonth}</p>
     </Paper>
   );
 }
