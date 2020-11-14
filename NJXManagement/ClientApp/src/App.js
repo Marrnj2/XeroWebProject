@@ -4,6 +4,7 @@ import { Layout } from './components/Layout';
 import { Home } from './components/Home';
 import Employees from './components/Employees';
 import Invoices from './components/Invoices';
+import Dashboard from './components/Dashboard';
 
 import AuthorizeRoute from './components/api-authorization/AuthorizeRoute';
 import ApiAuthorizationRoutes from './components/api-authorization/ApiAuthorizationRoutes';
@@ -18,6 +19,7 @@ export default class App extends Component {
     return (
       <Layout>
         <AuthorizeRoute exact path='/' component={Home} />
+        <AuthorizeRoute exact path='/dashboard' component={Dashboard} />
         <AuthorizeRoute path='/employees' component={Employees} />
         <AuthorizeRoute path='/invoices' component={Invoices} />
         <Route path={ApplicationPaths.ApiAuthorizationPrefix} component={ApiAuthorizationRoutes} />
