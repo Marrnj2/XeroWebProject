@@ -81,7 +81,7 @@ function NavigationLayout(props) {
       <Divider />
       <List>
         <NavItem>
-          <NavLink tag={Link} className="text-dark" to="/">
+          <NavLink tag={Link} className="text-dark" to="/dashboard">
             <ListItem button key={"Dashboard"}>
               <ListItemIcon>
                 <HomeIcon />
@@ -92,23 +92,23 @@ function NavigationLayout(props) {
         </NavItem>
 
         <NavItem>
-          <NavLink tag={Link} className="text-dark" to="/employees">
-          <ListItem button key={"Employees"}>
-            <ListItemIcon>
-              <PersonIcon />
-            </ListItemIcon>
-            <ListItemText primary={"Employees"} />
-          </ListItem>
-        </NavLink>
-        </NavItem>
-
-        <NavItem>
           <NavLink tag={Link} className="text-dark" to="/invoices">
           <ListItem button key={"Invoices"}>
             <ListItemIcon>
               <DescriptionIcon />
             </ListItemIcon>
             <ListItemText primary={"Invoices"} />
+          </ListItem>
+        </NavLink>
+        </NavItem>
+
+        <NavItem>
+          <NavLink tag={Link} className="text-dark" to="/employees">
+          <ListItem button key={"Employees"}>
+            <ListItemIcon>
+              <PersonIcon />
+            </ListItemIcon>
+            <ListItemText primary={"Employees"} />
           </ListItem>
         </NavLink>
         </NavItem>

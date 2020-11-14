@@ -64,7 +64,7 @@ namespace NJXManagement.Controllers
 
             _accessToken = _client.SendRequest(code);
             _bearerModel = _client.BearerToken();
-            return Redirect("/");
+            return Redirect("/dashboard");
         }
         [Route("Payroll/{endPoint}")]
         public IActionResult FetchPayroll(string endPoint)

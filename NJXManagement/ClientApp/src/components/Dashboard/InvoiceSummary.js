@@ -14,15 +14,7 @@ import {
 } from "recharts";
 import Moment from 'moment';
 
-
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    marginBottom: "30px",
-  },
-}));
-
-export default function InvoiceTable() {
-  const classes = useStyles();
+export default function BusinessSavingsAccount() {
 
   const [invoicesData, setInvoicesData] = useState([]);
 
@@ -49,6 +41,8 @@ export default function InvoiceTable() {
       let dateParts = totals[month].date.split("-")
       totals[month].date = Moment(dateParts[1]).format("MMM") + " " + dateParts[0]
     }
+
+    totals = totals.slice(0, 8);
 
     // save into state
     setInvoicesData(totals);
@@ -82,17 +76,18 @@ export default function InvoiceTable() {
   }
 
   return (
-    <Paper variant="outlined" className={"card-paper " + classes.paper}>
-      <h5>Overview</h5>
+    <Paper variant="outlined" className="card-paper">
+      <h5>Invoice Summary</h5>
+      
       <hr></hr>
-      <div style={{ width: "100%", height: 350 }}>
-        <ResponsiveContainer>
+      <div style={{ width: "100%", height: 250 }}>
+      <ResponsiveContainer>
           <BarChart
             data={invoicesData}
             margin={{
-              top: 20,
-              right: 30,
-              left: 20,
+              top: 10,
+              right: 20,
+              left: 0,
               bottom: 5
             }}
           >
@@ -105,7 +100,8 @@ export default function InvoiceTable() {
             <Bar dataKey="amountDue" stackId="a" fill="#bfbfbf" name="Due"/>
           </BarChart>
         </ResponsiveContainer>
-      </div>
+        </div>
     </Paper>
+    
   );
 }
