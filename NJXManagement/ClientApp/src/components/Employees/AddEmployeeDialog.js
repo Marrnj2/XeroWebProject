@@ -29,7 +29,7 @@ export default function AddEmployeeDialog() {
 
   const [fname, setFName] = useState("");
   const [lname, setLName] = useState("");
-  const [dob, setDOB] = useState("");
+  const [dob, setDOB] = useState("2000-01-01");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [address1, setAddress1] = useState("");
