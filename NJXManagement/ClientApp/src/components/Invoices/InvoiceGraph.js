@@ -102,7 +102,7 @@ export default function InvoiceTable() {
             <Tooltip />
             <Legend />
             <Bar dataKey="amountPaid" stackId="a" fill="#68A3DE" name="Paid"/>
-            <Bar dataKey="amountDue" stackId="a" fill="lightGrey" name="Due"/>
+            <Bar dataKey="amountDue" stackId="a" fill="#bfbfbf" name="Due"/>
           </BarChart>
         </ResponsiveContainer>
       </div>
