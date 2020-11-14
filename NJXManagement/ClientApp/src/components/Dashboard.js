@@ -10,10 +10,10 @@ export default class Dashboard extends Component {
     return (
       <div className="component-grid">
         <Grid container spacing={3}>
-          <Grid item xs={12} sm={12} md={6}>
+          <Grid item xs={12} sm={12} md={4}>
             <CompanyInfo/>
           </Grid>
-          <Grid item xs={12} sm={12} md={6}>
+          <Grid item xs={12} sm={12} md={8}>
             <InvoiceSummary/>
           </Grid>
           </Grid>
