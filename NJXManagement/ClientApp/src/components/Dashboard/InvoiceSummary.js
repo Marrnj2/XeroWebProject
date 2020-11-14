@@ -42,6 +42,8 @@ export default function BusinessSavingsAccount() {
       totals[month].date = Moment(dateParts[1]).format("MMM") + " " + dateParts[0]
     }
 
+    totals = totals.slice(0, 8);
+
     // save into state
     setInvoicesData(totals);
   };
@@ -83,9 +85,9 @@ export default function BusinessSavingsAccount() {
           <BarChart
             data={invoicesData}
             margin={{
-              top: 20,
-              right: 30,
-              left: 20,
+              top: 10,
+              right: 20,
+              left: 0,
               bottom: 5
             }}
           >
