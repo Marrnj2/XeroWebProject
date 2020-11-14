@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 
 import CompanyInfo from "./Dashboard/CompanyInfo";
-import BusinessSavingsAccount from "./Dashboard/BusinessSavingsAccount";
-import TotalCashInAndOut from "./Dashboard/TotalCashInAndOut";
-import AccountWatchlist from "./Dashboard/AccountWatchlist";
-import Bills from "./Dashboard/Bills";
+import InvoiceSummary from "./Dashboard/InvoiceSummary";
 
 export default class Dashboard extends Component {
 
@@ -17,20 +14,9 @@ export default class Dashboard extends Component {
             <CompanyInfo/>
           </Grid>
           <Grid item xs={12} sm={12} md={6}>
-            <BusinessSavingsAccount/>
+            <InvoiceSummary/>
           </Grid>
-
-          <Grid item xs={12} sm={12} md={6}>
-            <TotalCashInAndOut/>
           </Grid>
-          <Grid item xs={12} sm={12} md={6}>
-            <AccountWatchlist/>
-          </Grid>
-
-          <Grid item xs={12} sm={12} md={6}>
-            <Bills/>
-          </Grid>
-        </Grid>
       </div>
     );
   }
