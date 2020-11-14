@@ -32,6 +32,9 @@
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary auth-form-btn">Register</button>
                     </div>
+                    <p>
+                        Already have an account? <a asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl">Sign In</a>
+                    </p>
                 </form>
             </div>
         </div>
