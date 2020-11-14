@@ -81,7 +81,7 @@ function NavigationLayout(props) {
       <Divider />
       <List>
         <NavItem>
-          <NavLink tag={Link} className="text-dark" to="/">
+          <NavLink tag={Link} className="text-dark" to="/dashboard">
             <ListItem button key={"Dashboard"}>
               <ListItemIcon>
                 <HomeIcon />
