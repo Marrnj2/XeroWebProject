@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
 
 // getting the relavent fields for each employee
 function makeEmployeeData(employee) {
+  console.log(employee)
   let employeeID = employee.employeeID;
   let firstName = employee.firstName;
   let lastName = employee.lastName;
@@ -31,8 +32,13 @@ function makeEmployeeData(employee) {
   let startDate = (employee.startDate) ? (employee.startDate.split('T')[0]) : ("-");
   let endDate = (employee.endDate) ? (employee.endDate.split('T')[0]) : ("-");
 
+  let address1 = employee.address.addressLine1;
+  let address2 = employee.address.addressLine2;
+  let city = employee.address.city;
+  let postcode = employee.address.postCode;
+
   //save employee data into new object and return it
-  let employeeObj = {id: employeeID, lname: lastName, fname: firstName, email: email, phone: phoneNumber, startDate: startDate, endDate: endDate}
+  let employeeObj = {id: employeeID, lname: lastName, fname: firstName, email: email, phone: phoneNumber, startDate: startDate, endDate: endDate, address1: address1, address2: address2, city: city, postcode: postcode}
   return employeeObj
 }
 
