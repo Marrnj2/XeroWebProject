@@ -12,9 +12,7 @@ export class Home extends Component {
 
   render () {
     return (
-      <div className="component-grid">
-        home page
-      </div>
+      <div />
     );
   }
 }
