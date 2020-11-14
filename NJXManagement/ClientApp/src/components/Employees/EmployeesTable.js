@@ -28,6 +28,7 @@ function makeEmployeeData(employee) {
   let lastName = employee.lastName;
   let phoneNumber = employee.phoneNumber;
   let email = employee.email;
+  let dob = (employee.dateOfBirth) ? (employee.dateOfBirth.split('T')[0]) : ("-");
   // get only dates if they exist, else return '-'
   let startDate = (employee.startDate) ? (employee.startDate.split('T')[0]) : ("-");
   let endDate = (employee.endDate) ? (employee.endDate.split('T')[0]) : ("-");
@@ -38,7 +39,7 @@ function makeEmployeeData(employee) {
   let postcode = employee.address.postCode;
 
   //save employee data into new object and return it
-  let employeeObj = {id: employeeID, lname: lastName, fname: firstName, email: email, phone: phoneNumber, startDate: startDate, endDate: endDate, address1: address1, address2: address2, city: city, postcode: postcode}
+  let employeeObj = {id: employeeID, lname: lastName, fname: firstName, dob: dob, email: email, phone: phoneNumber, startDate: startDate, endDate: endDate, address1: address1, address2: address2, city: city, postcode: postcode}
   return employeeObj
 }
 
