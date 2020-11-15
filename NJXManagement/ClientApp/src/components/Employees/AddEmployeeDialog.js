@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     formGroupTitle: {
       marginTop: theme.spacing(4),
       paddingBottom: 0,
-      marginBottom: 0,
+      marginBottom: "10px",
     },
   }));
 
@@ -29,7 +29,7 @@ export default function AddEmployeeDialog() {
 
   const [fname, setFName] = useState("");
   const [lname, setLName] = useState("");
-  const [dob, setDOB] = useState("");
+  const [dob, setDOB] = useState("2000-01-01");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [address1, setAddress1] = useState("");
@@ -106,8 +106,9 @@ export default function AddEmployeeDialog() {
             Please enter in the new employees detials.
           </DialogContentText>
           
-            <h5 className={classes.formGroupTitle}>General Information</h5>
             <hr></hr>
+            <h5 className={classes.formGroupTitle}>General Information</h5>
+            
             <TextField
               autoFocus
               required
@@ -161,8 +162,9 @@ export default function AddEmployeeDialog() {
               onChange={e => setEmail(e.target.value)}
             />
 
-            <h5 className={classes.formGroupTitle}>Address</h5>
             <hr></hr>
+            <h5 className={classes.formGroupTitle}>Address</h5>
+            
             <TextField
               required
               margin="dense"

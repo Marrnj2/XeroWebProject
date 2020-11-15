@@ -13,7 +13,12 @@ import IconButton from '@material-ui/core/IconButton';
 const useStyles = makeStyles(theme => ({
     edtIcon: {
         color: "silver",
-    }
+    },
+    formGroupTitle: {
+      marginTop: theme.spacing(4),
+      paddingBottom: 0,
+      marginBottom: "10px",
+    },
 }));
 
 export default function UpdateEmployeeDialog(props) {
@@ -21,17 +26,17 @@ export default function UpdateEmployeeDialog(props) {
 
   const [open, setOpen] = React.useState(false);
 
-  console.log(props.employee)
+  console.log(props.employee);
   const [eID] = useState(props.employee.id);
   const [fname, setFName] = useState(props.employee.fname);
   const [lname, setLName] = useState(props.employee.lname);
-  const [dob, setDOB] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [address1, setAddress1] = useState("");
-  const [address2, setAddress2] = useState("");
-  const [city, setCity] = useState("");
-  const [postcode, setPostCode] = useState("");
+  const [dob, setDOB] = useState(props.employee.dob);
+  const [email, setEmail] = useState(props.employee.email);
+  const [phone, setPhone] = useState(props.employee.phoneNumber);
+  const [address1, setAddress1] = useState(props.employee.address1);
+  const [address2, setAddress2] = useState(props.employee.address2);
+  const [city, setCity] = useState(props.employee.city);
+  const [postcode, setPostCode] = useState(props.employee.postcode);
 
 
   const handleClickOpen = () => {
@@ -96,8 +101,9 @@ export default function UpdateEmployeeDialog(props) {
               Please update the employees detials.
             </DialogContentText>
 
-            <h5 className={classes.formGroupTitle}>General Information</h5>
             <hr></hr>
+            <h5 className={classes.formGroupTitle}>General Information</h5>
+            
             <TextField
               autoFocus
               required
@@ -151,8 +157,9 @@ export default function UpdateEmployeeDialog(props) {
               onChange={e => setEmail(e.target.value)}
             />
 
-            <h5 className={classes.formGroupTitle}>Address</h5>
             <hr></hr>
+            <h5 className={classes.formGroupTitle}>Address</h5>
+            
             <TextField
               required
               margin="dense"
