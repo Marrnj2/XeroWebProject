@@ -20,8 +20,10 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
- 
-  
+/*
+* A dialog screen that displays a form to add an employee
+* @component
+*/
 export default function AddEmployeeDialog() {
   const classes = useStyles();
 

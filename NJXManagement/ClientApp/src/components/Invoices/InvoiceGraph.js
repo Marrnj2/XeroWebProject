@@ -21,6 +21,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+/*
+* A component containing a table listing all the invoices from the API sorted by due date
+* @component
+*/
 export default function InvoiceTable() {
   const classes = useStyles();
 

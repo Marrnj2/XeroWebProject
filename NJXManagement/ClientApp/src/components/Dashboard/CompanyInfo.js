@@ -3,6 +3,10 @@ import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 import Moment from 'moment';
 
+/*
+* A component used to diplay some simple information about the company that is currently logged into Xero
+* @component
+*/
 export default function AccountWatchlist() {
   const [organisationData, setOrganisationData] = useState([]);
   const [organisationAddress, setOrganisationAddress] = useState({});
