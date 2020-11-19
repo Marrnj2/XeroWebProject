@@ -16,6 +16,7 @@ using NJXManagement.HttpModel;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using IdentityModel.Client;
 using Xero.NetStandard.OAuth2.Config;
+using Microsoft.AspNetCore.HttpOverrides;
 
 namespace NJXManagement
 {
@@ -83,7 +84,10 @@ namespace NJXManagement
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+            });
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
@@ -91,7 +95,7 @@ namespace NJXManagement
             app.UseRouting();
 
             dataContext.Database.Migrate();
-
+           
             app.UseAuthentication();
             app.UseIdentityServer();
             app.UseAuthorization();
