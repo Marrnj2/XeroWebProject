@@ -14,6 +14,10 @@ import {
 } from "recharts";
 import Moment from 'moment';
 
+/*
+* A component that displays a graph showing invoice totals on a monthly basis
+* @component
+*/
 export default function BusinessSavingsAccount() {
 
   const [invoicesData, setInvoicesData] = useState([]);

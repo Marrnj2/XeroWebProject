@@ -21,6 +21,11 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
+/*
+* A dialog screen that displays a form to update the current employee
+* takes an employees json data
+* @component
+*/
 export default function UpdateEmployeeDialog(props) {
   const classes = useStyles();
 

@@ -3,6 +3,10 @@ import { Container } from 'reactstrap';
 import './Layout.css';
 import NavigationLayout from './NavigationsLayout';
 
+/*
+* A component building the template navigation of the site
+* @component
+*/
 export class Layout extends Component {
   static displayName = Layout.name;
 

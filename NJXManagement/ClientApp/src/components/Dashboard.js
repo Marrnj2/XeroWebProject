@@ -4,6 +4,10 @@ import Grid from '@material-ui/core/Grid';
 import CompanyInfo from "./Dashboard/CompanyInfo";
 import InvoiceSummary from "./Dashboard/InvoiceSummary";
 
+/*
+* A component building the main dashboard
+* @component
+*/
 export default class Dashboard extends Component {
 
   render () {

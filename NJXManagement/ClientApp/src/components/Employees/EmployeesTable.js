@@ -43,6 +43,10 @@ function makeEmployeeData(employee) {
   return employeeObj
 }
 
+/*
+* A table populated with employee data from the api. 
+* @component
+*/
 export default function EmployeesTable() {
     const classes = useStyles();
 
